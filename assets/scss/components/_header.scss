@@ -40,9 +40,9 @@
         &:last-child{
           margin-right: 0;
         }
-        &:hover{
+        &:hover{ 
           cursor: pointer;
-          font-weight: 600;
+          color: transparentize(#ffffff, .5)
         }
       }
     }

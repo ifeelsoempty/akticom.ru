@@ -3,37 +3,27 @@
     <div class="container">
       <div class="header-wrapper">
         <div class="header-logo-wrapper">
-          <transition name="slide-fade">
-            <div v-if="show" class="header-logo" style="transition-delay: 1s">
-              <img src="@/assets/images/logo-white.png" alt="logo">
-            </div>
-          </transition>
+          <div class="header-logo transition-stairs transition-stairs-leave-to">
+            <img src="@/assets/images/logo-white.png" alt="logo">
+          </div>
         </div>
         <div class="header-menu">
           <ul class="header-navbar">
-            <transition name="slide-fade">
-              <li v-if="show" style="transition-delay: .1s">
-                Проекты
-              </li>
-            </transition>
-            <transition name="slide-fade">
-              <li v-if="show" style="transition-delay: .2s">
-                Услуги
-              </li>
-            </transition>
-            <transition name="slide-fade">
-              <li v-if="show" style="transition-delay: .3s">
-                Команда
-              </li>
-            </transition>
+            <li class="transition-stairs transition-stairs-leave-to">
+              Проекты
+            </li>
+            <li class="transition-stairs transition-stairs-leave-to">
+              Услуги
+            </li>
+            <li class="transition-stairs transition-stairs-leave-to">
+              Команда
+            </li>
           </ul>
           <div class="header-burger">
             <input id="header-burger-toggle" class="header-burger-toggle" type="checkbox" />
-            <transition name="slide-fade">
-              <label v-if="show" class="header-burger-btn" for="header-burger-toggle" style="transition-delay: .4s">
-                <span></span>
-              </label>
-            </transition>
+            <label class="header-burger-btn transition-stairs transition-stairs-leave-to" for="header-burger-toggle">
+              <span></span>
+            </label>
             <div class="header-burger-box">
               <div class="header-burger-box-content">
                 <!-- Content -->
@@ -53,20 +43,26 @@
 export default {
   data(){
     return {
-      show: false
+      timeout: 0
     }
   },
   mounted() {
-    this.show = true;
+    let arrStairs = Array.from(document.querySelectorAll('.transition-stairs'));
+    arrStairs.map(stair => {
+      this.timeout += 125;
+      setTimeout(() => {
+        stair.classList.remove('transition-stairs-leave-to');
+      }, this.timeout)
+    })
   }
 }
 </script>
 
 <style lang="scss">
-  .slide-fade-enter-active {
-    transition: all 1s ease-in-out;
+  .transition-stairs {
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out, color .3s ease-in-out;
   }
-  .slide-fade-enter, .slide-fade-leave-to {
+  .transition-stairs-leave-to {
     transform: translateY(-20px);
     opacity: 0;
   }
