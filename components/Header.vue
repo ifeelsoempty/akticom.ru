@@ -26,7 +26,7 @@
 export default {
   data(){
     return {
-      timeout: 0
+      timeout: 250
     }
   },
   mounted() {
@@ -43,7 +43,7 @@ export default {
         if(delay){
           timeout = delay;
         } else {
-          this.timeout += 333;
+          this.timeout += 250;
           console.log(this.timeout);
         }
 
