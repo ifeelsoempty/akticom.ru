@@ -1,0 +1,7 @@
+.has-dom-loaded{
+  .header__link, .header__logo, .header .burger-menu__btn{
+    transform: translateY(0);
+    transition-duration: .5s;
+    opacity: 1;
+  }
+}
