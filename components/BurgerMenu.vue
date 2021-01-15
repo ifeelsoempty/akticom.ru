@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'burger-menu_is-open': isOpen }" class="burger-menu">
-    <div v-on:click="isOpen = !isOpen" class="burger-menu__btn t-stairs t-stairs__leave-to" data-t-delay="1000">
+    <div v-on:click="isOpen = !isOpen" class="burger-menu__btn t-stairs t-stairs__leave-to" data-t-delay="500">
       <span></span>
       <span></span>
     </div>
@@ -168,7 +168,7 @@ export default {
       height: 300vh;
       transform-origin: right top;
       transform: rotate(-90deg);
-      transition: transform .8s cubic-bezier(.55,.055,.675,.19);
+      transition: transform .5s cubic-bezier(.55,.055,.675,.19);
       transition-delay: .2s;
       backdrop-filter: blur(15px);
     }
@@ -189,26 +189,24 @@ export default {
       }
       & .burger-menu__background {
         transform: translateZ(0) rotate(0deg);
-        transition: transform .6s cubic-bezier(.4,0,0,1);
         transition-delay: 0s;
       }
     }
   }
 
+  .burger-menu-enter-active,
+  .burger-menu-leave-active {
+    transition-duration: .5s;
+  }
+
   .burger-menu-enter-active {
     transition-delay: .5s;
-    transition-duration: 1s;
   }
   .burger-menu-leave-active {
     transition-delay: 0s;
-    transition-duration: .5s;
   }
-  .burger-menu-enter {
+  .burger-menu-enter, .burger-menu-leave-to {
     opacity: 0;
-    transform: translate(-100px);
-  }
-  .burger-menu-leave-to {
-    opacity: 0;
-    transform: translate(200px);
+    transform:  translate(100px, 100px);
   }
 </style>
