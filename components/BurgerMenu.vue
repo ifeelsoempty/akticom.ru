@@ -6,57 +6,53 @@
     </div>
     <div class="burger-menu__box">
       <div class="burger-menu__content container">
-        <transition name="burger-menu">
-          <div v-if="isOpen" class="burger-menu__nav">
-            <div class="burger-menu-item">
-              <div class="burger-menu-item__title">Разработка</div>
-              <ul class="burger-menu-item__links-list">
-                <li><a class="burger-menu-item__link" href="#">Корпоративные сайты</a></li>
-                <li><a class="burger-menu-item__link" href="#">Промо-магазины</a></li>
-                <li><a class="burger-menu-item__link" href="#">Промо-сайты</a></li>
-              </ul>
-              <div class="burger-menu-item__divider"></div>
-            </div>
-            <div class="burger-menu-item">
-              <div class="burger-menu-item__title">
-                <span>Контекстная реклама</span>
-              </div>
-              <ul class="burger-menu-item__links-list">
-                <li><a class="burger-menu-item__link" href="#">Контекстая реклама Google AdWords</a></li>
-                <li><a class="burger-menu-item__link" href="#">Контекстная реклама Яндекс Директ</a></li>
-                <li><a class="burger-menu-item__link" href="#">Колл-трекинг сайты</a></li>
-              </ul>
-              <div class="burger-menu-item__divider"></div>
-            </div>
-            <div class="burger-menu-item">
-              <div class="burger-menu-item__title">
-                <span>SEO продвижение</span>
-              </div>
-              <ul class="burger-menu-item__links-list">
-                <li><a class="burger-menu-item__link" href="#">Продвижение по позициям</a></li>
-                <li><a class="burger-menu-item__link" href="#">Продвижение в регионах</a></li>
-                <li><a class="burger-menu-item__link" href="#">Продвижение интернет-магазинов</a></li>
-              </ul>
-              <div class="burger-menu-item__divider"></div>
-            </div>
-            <div class="burger-menu-item">
-              <div class="burger-menu-item__title">
-                <span>Аналитика</span>
-              </div>
-              <ul class="burger-menu-item__links-list">
-                <li><a class="burger-menu-item__link" href="#">Анализ рынка и конкурентов</a></li>
-                <li><a class="burger-menu-item__link" href="#">Разработка бренд платформы</a></li>
-                <li><a class="burger-menu-item__link" href="#">Аналитика и сегментация</a></li>
-              </ul>
-            </div>
-            <div class="burger-menu-item">
-              <div class="burger-menu-item__title">
-                <span>Сопровождение</span>
-              </div>
-              <div class="burger-menu-item__divider"></div>
-            </div>
+        <div class="burger-menu__nav">
+          <div class="burger-menu-item">
+            <div class="burger-menu-item__title">Разработка</div>
+            <ul class="burger-menu-item__links-list">
+              <li><a class="burger-menu-item__link" href="#">Корпоративные сайты</a></li>
+              <li><a class="burger-menu-item__link" href="#">Промо-магазины</a></li>
+              <li><a class="burger-menu-item__link" href="#">Промо-сайты</a></li>
+            </ul>
+            <div class="burger-menu-item__divider"></div>
           </div>
-        </transition>
+          <div class="burger-menu-item">
+            <div class="burger-menu-item__title">Контекстная реклама</div>
+            <ul class="burger-menu-item__links-list">
+              <li><a class="burger-menu-item__link" href="#">Контекстая реклама Google AdWords</a></li>
+              <li><a class="burger-menu-item__link" href="#">Контекстная реклама Яндекс Директ</a></li>
+              <li><a class="burger-menu-item__link" href="#">Колл-трекинг сайты</a></li>
+            </ul>
+            <div class="burger-menu-item__divider"></div>
+          </div>
+          <div class="burger-menu-item">
+            <div class="burger-menu-item__title">
+              <span>SEO продвижение</span>
+            </div>
+            <ul class="burger-menu-item__links-list">
+              <li><a class="burger-menu-item__link" href="#">Продвижение по позициям</a></li>
+              <li><a class="burger-menu-item__link" href="#">Продвижение в регионах</a></li>
+              <li><a class="burger-menu-item__link" href="#">Продвижение интернет-магазинов</a></li>
+            </ul>
+            <div class="burger-menu-item__divider"></div>
+          </div>
+          <div class="burger-menu-item">
+            <div class="burger-menu-item__title">
+              <span>Аналитика</span>
+            </div>
+            <ul class="burger-menu-item__links-list">
+              <li><a class="burger-menu-item__link" href="#">Анализ рынка и конкурентов</a></li>
+              <li><a class="burger-menu-item__link" href="#">Разработка бренд платформы</a></li>
+              <li><a class="burger-menu-item__link" href="#">Аналитика и сегментация</a></li>
+            </ul>
+          </div>
+          <div class="burger-menu-item">
+            <div class="burger-menu-item__title">
+              <span>Сопровождение</span>
+            </div>
+            <div class="burger-menu-item__divider"></div>
+          </div>
+        </div>
         <div class="burger-menu__footer">
 
         </div>
@@ -122,11 +118,17 @@ export default {
       display: flex;
       align-items: center;
       margin-bottom: 25px;
+      transition: .6s ease-in-out;
+      transform: translate3d(100px,100px,0) skewY(-10deg);
+      transition-delay: 0s;
+      opacity: 0;
       &__title{
-        display: inline-block;
-        width: min-content;
-        font-size: 47px;
+        // display: flex;
+        // flex-basis: 0;
+        font-size: 46px;
         font-weight: 800;
+        width: min-content;
+        // max-width: 400px;
       }
       &__links-list{
         list-style: none;
@@ -168,7 +170,7 @@ export default {
       height: 300vh;
       transform-origin: right top;
       transform: rotate(-90deg);
-      transition: transform .5s cubic-bezier(.55,.055,.675,.19);
+      transition: transform 1s ease-in-out;
       transition-delay: .2s;
       backdrop-filter: blur(15px);
     }
@@ -191,22 +193,11 @@ export default {
         transform: translateZ(0) rotate(0deg);
         transition-delay: 0s;
       }
+      & .burger-menu-item{
+        transform: translateZ(0) skewY(0deg);
+        opacity: 1;
+        transition-delay: .6s;
+      }
     }
-  }
-
-  .burger-menu-enter-active,
-  .burger-menu-leave-active {
-    transition-duration: .5s;
-  }
-
-  .burger-menu-enter-active {
-    transition-delay: .5s;
-  }
-  .burger-menu-leave-active {
-    transition-delay: 0s;
-  }
-  .burger-menu-enter, .burger-menu-leave-to {
-    opacity: 0;
-    transform:  translate(100px, 100px);
   }
 </style>
