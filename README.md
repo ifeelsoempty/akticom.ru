@@ -1,4 +1,5 @@
-# akticom
+# Akticom.ru
+Site: https://akticom.herokuapp.com/
 
 ## Build Setup
 
