@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'burger-menu_is-open': isOpen }" class="burger-menu">
-    <div v-on:click="isOpen = !isOpen" class="burger-menu__btn t-stairs t-stairs__leave-to" data-t-delay="500">
+    <div v-on:click="isOpen = !isOpen" class="burger-menu__btn t-stairs t-stairs__leave-to" data-t-delay="1000">
       <span></span>
       <span></span>
     </div>
