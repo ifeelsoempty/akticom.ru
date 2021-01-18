@@ -1,4 +1,4 @@
-.burger-menu{
+.menu{
   display: flex;
   justify-content: flex-end;
   &__btn{
@@ -10,16 +10,17 @@
     cursor: pointer;
     z-index: 999;
     transform: translateY(-20px);
-    transition: .5s;
+    transition: transform .5s, opacity .5s;
     opacity: 0;
     transition-delay: .6s;
     & span{
       display: block;
       transform: rotate(0);
-      transition: .6s;
+      transition: transform .6s;
       width: 100%;
       height: 2px;
       border-bottom: 2px solid $white;
+      transform-origin: 34%;
     }
   }
   &__box{
@@ -39,7 +40,7 @@
     padding: 120px 0;
     height: 100%;
   }
-  &__nav{
+  &-nav{
     display: flex;
     flex-wrap: wrap;
   }
@@ -48,7 +49,7 @@
     display: flex;
     margin-right: 25px;
     margin-bottom: 25px;
-    transition: .4s ease-in-out;
+    transition: transform .3s cubic-bezier(.55,.055,.675,.19),opacity .3s cubic-bezier(.55,.055,.675,.19);
     transform: translate3d(100px,100px,0) skewY(-10deg);
     opacity: 0;
     &__title{
@@ -82,6 +83,24 @@
       font-weight: 200;
       text-decoration: none;
     }
+    &:nth-child(1){
+      transition-delay: .125s;
+    }
+    &:nth-child(2){
+      transition-delay: .1s;
+    }
+    &:nth-child(3){
+      transition-delay: .075s;
+    }
+    &:nth-child(4){
+      transition-delay: .05s;
+    }
+    &:nth-child(5){
+      transition-delay: .025s;
+    }
+    &:nth-child(6){
+      transition-delay: 0s;
+    }
   }
   &-divider{
     display: flex;
@@ -106,17 +125,32 @@
     right: 0;
     width: 300vw;
     height: 300vh;
+    backdrop-filter: blur(15px);
     transform-origin: right top;
     transform: rotate(-90deg);
-    transition: transform .6s ease-in-out;
+    transition: transform .45s cubic-bezier(.55,.055,.675,.19);
     transition-delay: .2s;
-    backdrop-filter: blur(15px);
   }
-  &__footer{
+  &-footer{
     display: flex;
-    opacity: 0;
-    transition: .5s;
-    transform: translate3d(50px,50px,0) skewY(-10deg);
+    &__col{
+      margin-right: 60px;
+      &:last-child{
+        margin-right: 0
+      }
+    }
+    &__row{
+      opacity: 0;
+      transition: transform .3s cubic-bezier(.55,.055,.675,.19),opacity .3s cubic-bezier(.55,.055,.675,.19);
+      transform: translate3d(50px,50px,0) skewY(-10deg);
+      &:nth-child(2n){
+        margin-top: 20px;
+        transition-delay: .1s;
+      }
+      &:nth-child(2n+1){
+        transition-delay: .2s;
+      }
+    }
   }
   &__socials{
     display: flex;
@@ -126,21 +160,6 @@
     &:last-child{
       margin-right: 0;
     }
-  }
-  &__phones{
-    margin-left: 60px;
-  }
-  &__phone-item{
-    margin-top: 20px;
-    &:first-child{
-      margin-top: 0;
-    }
-  }
-  &__address{
-    margin-left: 60px;
-  }
-  &__address-item{
-    margin-top: 20px;
   }
   &__city{
     display: flex;
@@ -153,37 +172,79 @@
       text-shadow: 0 0 1px $white, 0 0 1px $white;
     }
   }
-  &__mail{
-    margin-top: 20px;
-  }
   &_is-open {
-    & .burger-menu__btn span{
+    & .menu__btn span{
       transform: rotate(45deg);
-      transition: .7s;
     }
-    & .burger-menu__btn span:last-child {
+    & .menu__btn span:last-child {
       top: 0;
-      transition: .7s;
       transform: rotate(-45deg);
     }
-    & .burger-menu__box{
+    & .menu__box{
       pointer-events: all;
       z-index: 90;
       transition-delay: 0s;
     }
-    & .burger-menu__background {
+    & .menu__background {
       transform: translateZ(0) rotate(0deg);
+      transition: transform .6s cubic-bezier(.4,0,0,1);
       transition-delay: 0s;
     }
-    & .burger-menu-item{
+    & .menu-item{
       transform: translateZ(0) skewY(0deg);
+      transition: transform .6s cubic-bezier(.4,0,0,1),opacity .6s cubic-bezier(.4,0,0,1);
       opacity: 1;
-      transition-delay: .3s;
+      transition-delay: .2s;
+      &:nth-child(1){
+        transition-delay: .2s;
+      }
+      &:nth-child(2){
+        transition-delay: .25s;
+      }
+      &:nth-child(3){
+        transition-delay: .3s;
+      }
+      &:nth-child(4){
+        transition-delay: .35s;
+      }
+      &:nth-child(5){
+        transition-delay: .4s;
+      }
+      &:nth-child(6){
+        transition-delay: .45s;
+      }
     }
-    & .burger-menu__footer{
-      transform: translateZ(0) skewY(0deg);
-      opacity: 1;
-      transition-delay: .5s;
+    & .menu-footer{
+      &__row{
+        transition: transform .6s cubic-bezier(.4,0,0,1),opacity .6s cubic-bezier(.4,0,0,1);
+        transform: translateZ(0) skewY(0deg);
+        opacity: 1;
+        &:nth-child(2n+1){
+          transition-delay: .3s;
+        }
+        &:nth-child(2n){
+          transition-delay: .4s;
+        }
+
+        &:nth-child(1){
+          transition-delay: .2s;
+        }
+        &:nth-child(2){
+          transition-delay: .25s;
+        }
+        &:nth-child(3){
+          transition-delay: .3s;
+        }
+        &:nth-child(4){
+          transition-delay: .35s;
+        }
+        &:nth-child(5){
+          transition-delay: .4s;
+        }
+        &:nth-child(6){
+          transition-delay: .45s;
+        }
+      }
     }
   }
 }
