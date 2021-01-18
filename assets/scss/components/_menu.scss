@@ -10,7 +10,7 @@
     cursor: pointer;
     z-index: 999;
     transform: translateY(-20px);
-    transition: transform .5s, opacity .5s;
+    transition: transform .6s, opacity .6s;
     opacity: 0;
     transition-delay: .6s;
     & span{
@@ -145,10 +145,9 @@
       transform: translate3d(50px,50px,0) skewY(-10deg);
       &:nth-child(2n){
         margin-top: 20px;
-        transition-delay: .1s;
       }
       &:nth-child(2n+1){
-        transition-delay: .2s;
+        transition-delay: .05s;
       }
     }
   }
@@ -220,29 +219,10 @@
         transform: translateZ(0) skewY(0deg);
         opacity: 1;
         &:nth-child(2n+1){
-          transition-delay: .3s;
+          transition-delay: .45s;
         }
         &:nth-child(2n){
-          transition-delay: .4s;
-        }
-
-        &:nth-child(1){
-          transition-delay: .2s;
-        }
-        &:nth-child(2){
-          transition-delay: .25s;
-        }
-        &:nth-child(3){
-          transition-delay: .3s;
-        }
-        &:nth-child(4){
-          transition-delay: .35s;
-        }
-        &:nth-child(5){
-          transition-delay: .4s;
-        }
-        &:nth-child(6){
-          transition-delay: .45s;
+          transition-delay: .5s;
         }
       }
     }
