@@ -71,26 +71,29 @@ import 'swiper/swiper-bundle.css'
       return {
         swiperOption: {
           notNextTick: true,
-          setWrapperSize: true,
           on: {
-            slideChange (swiper) {
-              if(swiper.realIndex == 1){
+            progress (swiper) {
+              let progress = swiper.progress;
+              let slideStep = 1 / (swiper.slides.length - 1);
+
+              if((progress > (slideStep / 2)) && (progress <= slideStep + (slideStep / 2))){
                 document.body.classList.add('beige-theme')
               } else {
                 document.body.classList.remove('beige-theme')
               }
 
-              if(swiper.realIndex == 2){
+              if((progress > slideStep + (slideStep / 2)) && (progress <= ((slideStep * 2) + (slideStep / 2)))){
                 document.body.classList.add('blue-theme')
               } else {
                 document.body.classList.remove('blue-theme')
               }
 
-              if(swiper.realIndex == 3){
+              if((progress > ((slideStep * 2) + (slideStep / 2)))){
                 document.body.classList.add('purple-theme')
               } else {
                 document.body.classList.remove('purple-theme')
               }
+
             }
           }
         }
