@@ -1,0 +1,47 @@
+.beige-theme{
+  background: #E6E0D4;
+  & .header {
+    color: #939393;
+  }
+  & .header__logo path{
+    fill: #939393;
+  }
+  & .header__link a{
+    color: #939393;
+  }
+  & .slide__title {
+    color: #939393;
+  }
+  & .slide__subtitle {
+    color: #939393;
+  }
+  & .menu__btn span{
+    border-bottom: 2px solid #939393;
+  }
+  & .menu__underlay{
+    background: #ccc5b7;
+  }
+  & .menu-item__link{
+    color: #939393;
+  }
+  & .menu-divider__line{
+    background: #939393;
+  }
+  & .menu__social-item svg path {
+    fill: #939393;
+  }
+}
+
+.blue-theme{
+  background:#0071B0;
+  & .menu__underlay{
+    background: darken(#0071B0, 5%);
+  }
+}
+
+.purple-theme{
+  background:#47466C;
+  & .menu__underlay{
+    background: darken(#47466C, 5%);
+  }
+}

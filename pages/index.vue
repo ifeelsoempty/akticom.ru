@@ -1,30 +1,109 @@
 <template>
-  <!-- <div>
-    <div v-bind:style="{ 
-      backgroundImage: `url(${require('@/assets/images/main-background.png')})`, 
-      width: '100vw', 
-      height: '100vh',
-      overflow: hidden, 
-      filter:'brightness(.5)',
-      backgroundSize:'cover'
-    }">
+  <div v-swiper:mySwiper="swiperOption">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide">
+        <div class="slide-container container">
+          <div class="slide__inner">
+            <div class="slide__subtitle">
+              Akticom - это digital-студия
+            </div>
+            <div class="slide__title">
+              Решаем digital задачи
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide slide">
+        <div class="slide-container container">
+          <div class="slide__inner">
+            <div class="slide__subtitle">
+              Проектируем крутые сайты
+            </div>
+            <div class="slide__title">
+              Решаем digital задачи
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide slide">
+        <div class="slide-container container">
+          <div class="slide__inner">
+            <div class="slide__subtitle">
+              Проектируем крутые сайты
+            </div>
+            <div class="slide__title">
+              Решаем digital задачи
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide slide">
+        <div class="slide-container container">
+          <div class="slide__inner">
+            <div class="slide__subtitle">
+              Проектируем крутые сайты
+            </div>
+            <div class="slide__title">
+              Решаем digital задачи
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; backdrop-filter: blur(90px);" >    
-    </div>
-  </div> -->
-  <div style="background: #2C2A2A; width: 100vw; height: 100vh">
-    <!-- Content -->
+    <div class="swiper-pagination"></div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+
+import 'swiper/swiper-bundle.css'
+
+  export default {
+    components: {
+      Swiper,
+      SwiperSlide
+    },
+    directives: {
+      swiper: directive
+    },
+    data() {
+      return {
+        swiperOption: {
+          notNextTick: true,
+          setWrapperSize: true,
+          on: {
+            slideChange (swiper) {
+              if(swiper.realIndex == 1){
+                document.body.classList.add('beige-theme')
+              } else {
+                document.body.classList.remove('beige-theme')
+              }
+
+              if(swiper.realIndex == 2){
+                document.body.classList.add('blue-theme')
+              } else {
+                document.body.classList.remove('blue-theme')
+              }
+
+              if(swiper.realIndex == 3){
+                document.body.classList.add('purple-theme')
+              } else {
+                document.body.classList.remove('purple-theme')
+              }
+            }
+          }
+        }
+      }
+    },
+    mounted() {
     }
-  },
-}
+  }
 </script>
 
-<style lang="scss">
+<style>
+.swiper-wrapper{
+  width: 100vw;
+  height: 100vh;
+}
 </style>
