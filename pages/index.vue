@@ -70,31 +70,33 @@ import 'swiper/swiper-bundle.css'
     data() {
       return {
         swiperOption: {
-          notNextTick: true,
           on: {
             progress (swiper) {
-              let progress = swiper.progress;
-              let slideStep = 1 / (swiper.slides.length - 1);
+              changeThemeOnProgress(swiper, 1, 'beige-theme');
+              changeThemeOnProgress(swiper, 2, 'blue-theme');
+              changeThemeOnProgress(swiper, 3, 'purple-theme');
 
-              if((progress > (slideStep / 2)) && (progress <= slideStep + (slideStep / 2))){
-                document.body.classList.add('beige-theme')
-              } else {
-                document.body.classList.remove('beige-theme')
+              function changeThemeOnProgress(swiper, slideIndex, themeClass){
+                let progress = swiper.progress;
+                let slideStep = 1 / (swiper.slides.length - 1);
+                let halfSlideStep = slideStep / 2;
+
+                if(slideIndex == 0){
+                  console.log(progress);
+                  if(progress <= halfSlideStep){
+                    document.body.classList.add(themeClass)
+                  } else {
+                    document.body.classList.remove(themeClass)
+                  }
+                } else {
+                  if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
+                    document.body.classList.add(themeClass)
+                  } else {
+                    document.body.classList.remove(themeClass)
+                  }
+                }
               }
-
-              if((progress > slideStep + (slideStep / 2)) && (progress <= ((slideStep * 2) + (slideStep / 2)))){
-                document.body.classList.add('blue-theme')
-              } else {
-                document.body.classList.remove('blue-theme')
-              }
-
-              if((progress > ((slideStep * 2) + (slideStep / 2)))){
-                document.body.classList.add('purple-theme')
-              } else {
-                document.body.classList.remove('purple-theme')
-              }
-
-            }
+            },
           }
         }
       }
