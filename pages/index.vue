@@ -1,5 +1,5 @@
 <template>
-  <div v-swiper:mySwiper="swiperOption">
+  <div class="slider" v-swiper:mySwiper="swiperOption">
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
         <div class="slide-container container">
@@ -10,17 +10,13 @@
             <div class="slide__title">
               Решаем digital задачи
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          <div class="slide__inner">
-            <div class="slide__subtitle">
-              Проектируем крутые сайты
-            </div>
-            <div class="slide__title">
-              Решаем digital задачи
+            <div class="slide__navbar">
+              <div class="slide__contact-us">Say Hello</div>
+              <ul class="slide__nav">
+                <li class="slide__link"><a href="#">Разработка</a></li>
+                <li class="slide__link"><a href="#">Сопровождение</a></li>
+                <li class="slide__link"><a href="#">Реклама</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -34,6 +30,14 @@
             <div class="slide__title">
               Решаем digital задачи
             </div>
+            <div class="slide__navbar">
+              <div class="slide__contact-us">Say Hello</div>
+              <ul class="slide__nav">
+                <li class="slide__link"><a href="#">Разработка</a></li>
+                <li class="slide__link"><a href="#">Сопровождение</a></li>
+                <li class="slide__link"><a href="#">Реклама</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -45,6 +49,34 @@
             </div>
             <div class="slide__title">
               Решаем digital задачи
+            </div>
+            <div class="slide__navbar">
+              <div class="slide__contact-us">Say Hello</div>
+              <ul class="slide__nav">
+                <li class="slide__link"><a href="#">Разработка</a></li>
+                <li class="slide__link"><a href="#">Сопровождение</a></li>
+                <li class="slide__link"><a href="#">Реклама</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide slide">
+        <div class="slide-container container">
+          <div class="slide__inner">
+            <div class="slide__subtitle">
+              Проектируем крутые сайты
+            </div>
+            <div class="slide__title">
+              Решаем digital задачи
+            </div>
+            <div class="slide__navbar">
+              <div class="slide__contact-us">Say Hello</div>
+              <ul class="slide__nav">
+                <li class="slide__link"><a href="#">Разработка</a></li>
+                <li class="slide__link"><a href="#">Сопровождение</a></li>
+                <li class="slide__link"><a href="#">Реклама</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -107,7 +139,7 @@ import 'swiper/swiper-bundle.css'
 </script>
 
 <style>
-.swiper-wrapper{
+.swiper-container{
   width: 100vw;
   height: 100vh;
 }

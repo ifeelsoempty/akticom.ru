@@ -30,6 +30,15 @@
   & .menu__social-item svg path {
     fill: #939393;
   }
+  & .slide{
+    color: #939393;
+  }
+  & .slide__link a {
+    color: #939393;
+  }
+  & .slide__nav::before{
+    background: #939393;
+  }
 }
 
 .blue-theme{

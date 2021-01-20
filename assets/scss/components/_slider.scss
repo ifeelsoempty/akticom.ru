@@ -1,18 +1,69 @@
+.slider {
+  overflow: hidden;
+}
 .slide {
   color: $white;
   &__inner{
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: transform .5s .75s, opacity .5s .75s;
     padding-top: 300px;
     max-width: 800px;
+    pointer-events: none;
   }
   &__title{
     margin-top: 30px;
-    font-size: 80px;
-    font-weight: 700;
-    line-height: 70px;
+    font-size: 90px;
+    font-weight: 800;
+    line-height: 80px;
   }
   &__subtitle{
     font-size: 20px;
     font-weight: 300;
     letter-spacing: 0.06rem;
+  }
+  &__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+  }
+  &__nav{
+    position: relative;
+    list-style: none;
+    padding: 0;
+    width: 380px;
+    &::before{
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 200px;
+      background: $white;
+      top: -100px;
+      opacity: .5;
+      left: -50px;
+      transform: skewX(-25deg);
+    }
+  }
+  &__link{
+    margin-top: 10px;
+    &:first-child{
+      margin-top: 0;
+    }
+    & a {
+      font-size: 22px;
+      text-transform: uppercase;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  &__contact-us{
+    opacity: .6;
+    align-self: flex-end;
+    letter-spacing: 0.06rem;
+    transform: rotate(-90deg);
+    position: relative;
+    bottom: -20px;
+    transform-origin: left top;
   }
 }
