@@ -42,8 +42,13 @@
   & .slide__nav::before{
     background: #939393;
   }
-  & .slider-btn-next__background{
-    background: #939786;
+  & .slider-btn-next{
+    &__background{
+      background:  #939786;
+    }
+    &:hover .slider-btn-next__background{
+      background: darken(#939786, 10%);
+    }
   }
 }
 
@@ -52,8 +57,14 @@
   & .menu__underlay{
     background: darken(#0071B0, 5%);
   }
-  & .slider-btn-next__background{
-    background:  darken(#0071B0, 5%);;
+
+  & .slider-btn-next{
+    &__background{
+      background:  darken(#0071B0, 5%);;
+    }
+    &:hover .slider-btn-next__background{
+      background: darken(#0071B0, 10%);
+    }
   }
 }
 
@@ -62,7 +73,12 @@
   & .menu__underlay{
     background: darken(#47466C, 5%);
   }
-  & .slider-btn-next__background{
-    background: darken(#47466C, 5%);
+  & .slider-btn-next{
+    &__background{
+      background:  darken(#47466C, 5%);;
+    }
+    &:hover .slider-btn-next__background{
+      background: darken(#47466C, 10%);
+    }
   }
 }

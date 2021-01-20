@@ -1,7 +1,11 @@
 .has-dom-loaded{
-  .header__link, .header__logo, .header .menu__btn, .slide__inner{
+  .header__link, .header__logo, .header .menu__btn, .slide__inner, .slider-btn-next__content{
     transform: translateY(0);
     transition-duration: .5s;
     opacity: 1;
+  }
+
+  .slider-btn-next__background{
+    transform: rotate(23deg);
   }
 }
