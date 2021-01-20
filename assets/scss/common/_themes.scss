@@ -42,6 +42,9 @@
   & .slide__nav::before{
     background: #939393;
   }
+  & .slider-btn-next__background{
+    background: #939786;
+  }
 }
 
 .blue-theme{
@@ -49,11 +52,17 @@
   & .menu__underlay{
     background: darken(#0071B0, 5%);
   }
+  & .slider-btn-next__background{
+    background:  darken(#0071B0, 5%);;
+  }
 }
 
 .purple-theme{
   background:#47466C;
   & .menu__underlay{
+    background: darken(#47466C, 5%);
+  }
+  & .slider-btn-next__background{
     background: darken(#47466C, 5%);
   }
 }

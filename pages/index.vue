@@ -82,7 +82,13 @@
         </div>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
+    <div class="slider-btn-next">
+      <div class="slider-btn-next__content">
+        Next
+      </div>
+      <div class="slider-btn-next__background">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -104,6 +110,19 @@ import 'swiper/swiper-bundle.css'
         swiperOption: {
           on: {
             init(swiper) {
+              const content = document.querySelector('body');
+
+              let delay = false;
+              content.addEventListener("wheel" , (e) => {
+                if(!delay){
+                  e.deltaY < 0 ? swiper.slidePrev() : swiper.slideNext();
+                  delay = true;
+                  setTimeout(() => {
+                    delay = false;
+                  }, 500)
+                }
+              });
+
               const links = Array.from(document.querySelectorAll('.slide__link'));
               links.map(link => {
                 link.addEventListener('click', () => {
@@ -112,6 +131,15 @@ import 'swiper/swiper-bundle.css'
                     swiper.slideTo(link.dataset.swipeTo);
                   } 
                 })
+              })
+
+              const nextBtn = document.querySelector('.slider-btn-next');
+              nextBtn.addEventListener('click', () => {
+                if(swiper.realIndex == (swiper.slides.length - 1)){
+                  swiper.slideTo(0);
+                }else{
+                  swiper.slideNext();
+                }
               })
             },
             progress (swiper) {

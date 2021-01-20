@@ -19,7 +19,7 @@ html {
 }
 body{
   background-color: #2C2A2A;
-  transition: background-color 0.75s;
+  transition: background-color $t-theme-duration;
   overflow: hidden;
 }
 

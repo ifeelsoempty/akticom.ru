@@ -1,3 +1,35 @@
+.slider {
+  &-btn-next{
+    cursor: pointer;
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 300px;
+    height: 800px;
+    z-index: 5;
+    &__background{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: darken(#2C2A2A, 5%);
+      transform: rotate(23deg);
+      transform-origin: bottom left;
+      transition: background-color .75s;
+    }
+    &__content{
+      position: absolute;
+      z-index: 10;
+      bottom: 75px;
+      right: 85px;
+      font-size: 25px;
+      font-weight: 100;
+      color: $white;
+      text-transform: uppercase;
+    }
+  }
+}
 .slide {
   color: $white;
   &__inner{
@@ -40,7 +72,7 @@
       top: -100px;
       opacity: .5;
       left: -50px;
-      transform: skewX(-25deg);
+      transform: skewX(-23.3deg);
     }
     & li {
       margin-top: 10px;
