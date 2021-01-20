@@ -13,9 +13,9 @@
             <div class="slide__navbar">
               <div class="slide__contact-us">Say Hello</div>
               <ul class="slide__nav">
-                <li class="slide__link"><a href="#">Разработка</a></li>
-                <li class="slide__link"><a href="#">Сопровождение</a></li>
-                <li class="slide__link"><a href="#">Реклама</a></li>
+                <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
               </ul>
             </div>
           </div>
@@ -33,9 +33,9 @@
             <div class="slide__navbar">
               <div class="slide__contact-us">Say Hello</div>
               <ul class="slide__nav">
-                <li class="slide__link"><a href="#">Разработка</a></li>
-                <li class="slide__link"><a href="#">Сопровождение</a></li>
-                <li class="slide__link"><a href="#">Реклама</a></li>
+                <li><a class="slide__link slide__link_active">Разработка</a></li>
+                <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
               </ul>
             </div>
           </div>
@@ -53,9 +53,9 @@
             <div class="slide__navbar">
               <div class="slide__contact-us">Say Hello</div>
               <ul class="slide__nav">
-                <li class="slide__link"><a href="#">Разработка</a></li>
-                <li class="slide__link"><a href="#">Сопровождение</a></li>
-                <li class="slide__link"><a href="#">Реклама</a></li>
+                <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                <li><a class="slide__link slide__link_active">Сопровождение</a></li>
+                <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
               </ul>
             </div>
           </div>
@@ -73,9 +73,9 @@
             <div class="slide__navbar">
               <div class="slide__contact-us">Say Hello</div>
               <ul class="slide__nav">
-                <li class="slide__link"><a href="#">Разработка</a></li>
-                <li class="slide__link"><a href="#">Сопровождение</a></li>
-                <li class="slide__link"><a href="#">Реклама</a></li>
+                <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                <li><a class="slide__link slide__link_active">Реклама</a></li>
               </ul>
             </div>
           </div>
@@ -103,6 +103,17 @@ import 'swiper/swiper-bundle.css'
       return {
         swiperOption: {
           on: {
+            init(swiper) {
+              const links = Array.from(document.querySelectorAll('.slide__link'));
+              links.map(link => {
+                link.addEventListener('click', () => {
+                  let slideIndex = link.dataset.swipeTo;
+                  if(slideIndex){
+                    swiper.slideTo(link.dataset.swipeTo);
+                  } 
+                })
+              })
+            },
             progress (swiper) {
               changeThemeOnProgress(swiper, 1, 'beige-theme');
               changeThemeOnProgress(swiper, 2, 'blue-theme');

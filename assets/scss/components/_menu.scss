@@ -130,7 +130,7 @@
     transform: rotate(-90deg);
     transition: transform .45s cubic-bezier(.55,.055,.675,.19);
     transition-delay: .2s;
-    will-change: transform, opacity;
+    will-change: transform;
   }
   &-footer{
     display: flex;

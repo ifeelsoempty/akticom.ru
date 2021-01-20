@@ -33,8 +33,11 @@
   & .slide{
     color: #939393;
   }
-  & .slide__link a {
+  & .slide__link{
     color: #939393;
+    &::after{
+      background: #939393;
+    }
   }
   & .slide__nav::before{
     background: #939393;
