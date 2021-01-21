@@ -50,6 +50,9 @@
       background: darken(#939786, 10%);
     }
   }
+  & .slider-mouse svg path{
+    stroke: #939786;
+  }
 }
 
 .blue-theme{

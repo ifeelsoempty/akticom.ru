@@ -1,5 +1,5 @@
 .has-dom-loaded{
-  .header__link, .header__logo, .header .menu__btn, .slide__inner, .slider-btn-next__content{
+  .header__link, .header__logo, .header .menu__btn, .slide__content, .slider-btn-next__content{
     transform: translateY(0);
     transition-duration: .5s;
     opacity: 1;
@@ -7,5 +7,10 @@
 
   .slider-btn-next__background{
     transform: rotate(23deg);
+  }
+
+  .slider-mouse{
+    opacity: .6;
+    transform: translateY(0);
   }
 }
