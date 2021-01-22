@@ -187,8 +187,10 @@ import 'swiper/swiper-bundle.css'
                 } else {
                   if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
                     document.body.classList.add(themeClass)
+                    swiper.slides[slideIndex].classList.add('slide_progress-active');
                   } else {
                     document.body.classList.remove(themeClass)
+                    swiper.slides[slideIndex].classList.remove('slide_progress-active');
                   }
                 }
               }

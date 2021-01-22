@@ -57,8 +57,13 @@
       display: -ms-grid;
       font-size: 42px;
       font-weight: 800;
+      cursor: pointer;
       width: min-content;
       -ms-grid-columns: min-content;
+      transition: opacity .25s;
+      &:hover{
+        opacity: .4;
+      }
     }
     &__links-list{
       list-style: none;
@@ -116,14 +121,12 @@
     width: 100%;
     height: 100%;
     background: darken(#2C2A2A, 5%);
-    opacity: .9;
   }
   &__background{
     position: absolute;
     top: 0;
     right: 0;
     z-index: -1;
-    backdrop-filter: blur(15px);
     transform-origin: right top;
     width: 300vw;
     height: 300vh;
@@ -172,7 +175,6 @@
       }
     }
     &_selected{
-      text-shadow: 0 0 1px $white, 0 0 1px $white;
     }
   }
   &_is-open {

@@ -54,9 +54,10 @@
         font-weight: 300;
         letter-spacing: 0.06rem;
         text-decoration: none;
-        &:hover{ 
-          cursor: pointer;
-          color: $t-link-color;
+        cursor: pointer;
+        transition: opacity .25s;
+        &:hover{
+          opacity: .5;
         }
       }
     }
