@@ -168,10 +168,4 @@
       }
     }
   }
-  &_progress-active{
-    & .slide-photo {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
 }

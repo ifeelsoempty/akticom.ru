@@ -15,6 +15,8 @@
     &__logo{
       margin-right: auto;
       transition-delay: .6s;
+      transform: translateY(-20px);
+      opacity: 0;
       & path {
         transition-duration: $t-link-duration;
       }
@@ -23,9 +25,9 @@
         cursor: pointer;
       }
     }
-    &__nav{
+    &-nav{
       margin-right: auto;
-      &-links{
+      &__links{
         display: flex;
         list-style: none;
         text-transform: uppercase;
@@ -33,37 +35,33 @@
         font-size: 14px;
         padding: 0;
       }
-    }
-    &__link {
-      margin-left: 50px;
-      opacity: 0;
-      transform: translateY(-20px);
-      transition: .5s;
-      &:first-child{
-        margin-left: 0;
-        transition-delay: .15s;
-      }
-      &:nth-child(2){
-        transition-delay: .3s;  
-      }
-      &:nth-child(3){
-        transition-delay: .45s;
-      }
-      & a {
-        color: $white;
-        font-weight: 300;
-        letter-spacing: 0.06rem;
-        text-decoration: none;
-        cursor: pointer;
-        transition: opacity .25s;
-        &:hover{
-          opacity: .5;
+      &__link {
+        margin-left: 50px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: .5s;
+        & a {
+          color: $white;
+          font-weight: 300;
+          letter-spacing: 0.06rem;
+          text-decoration: none;
+          cursor: pointer;
+          transition: opacity .25s;
+          &:hover{
+            opacity: .5;
+          }
+        }
+        &:first-child{
+          margin-left: 0;
+          transition-delay: .15s;
+        }
+        &:nth-child(2){
+          transition-delay: .3s;  
+        }
+        &:nth-child(3){
+          transition-delay: .45s;
         }
       }
-    }
-    &__link, &__logo{
-      transform: translateY(-20px);
-      opacity: 0;
     }
   }
 

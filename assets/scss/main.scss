@@ -1,10 +1,9 @@
 @import 'common/vars';
 @import 'common/fonts';
 @import 'common/transitions';
+@import 'common/themes';
+@import 'common/layout';
 
 @import 'components/header';
 @import 'components/menu';
 @import 'components/slider';
-
-@import 'common/themes';
-@import 'common/layout';
