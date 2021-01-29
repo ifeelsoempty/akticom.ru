@@ -85,3 +85,60 @@
     }
   }
 }
+
+.dark-theme{
+  background: #2C2A2A;
+  & .header {
+    color: $white;
+  }
+  & .header__logo path{
+    fill: $white;
+  }
+  & .header-nav__link a{
+    color: $white;
+  }
+  & .slide__title {
+    color: $white;
+  }
+  & .slide__subtitle {
+    color: $white;
+  }
+  & .menu__btn span{
+    border-bottom: 2px solid $white;
+  }
+  & .menu__underlay{
+    background: darken(#2C2A2A, 5%);
+  }
+  & .menu-item__link{
+    color: $white;
+  }
+  & .menu-divider__line{
+    background: $white;
+  }
+  & .menu__social-item svg path {
+    fill: $white;
+  }
+  & .slide{
+    color: $white;
+  }
+  & .slide__link{
+    color: $white;
+    &::after{
+      background:$white;
+    }
+  }
+  & .slide__nav::before{
+    background: $white;
+  }
+  & .slider-btn-next{
+    &__background{
+      background: #2C2A2A;
+    }
+    &:hover .slider-btn-next__background{
+      background: darken(#2C2A2A, 10%);
+    }
+  }
+  & .slider-mouse svg path{
+    stroke: $white;
+  }
+}

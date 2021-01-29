@@ -1,5 +1,5 @@
 <template>
-  <div class="slider" v-swiper:mySwiper="swiperOption">
+  <div class="h-slider" v-swiper:mySwiper="swiperOption">
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
         <div class="slide-container container">
@@ -102,14 +102,6 @@
         </div>
       </div>
     </div>
-    <div class="slider-static container">
-      <div class="slider-mouse">
-        <svg width="34px" height="50px" viewBox="0 0 247 390" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <path class="slider-mouse__wheel" d="M123.359,79.775l0,72.843" stroke="#F2EFE8" stroke-width="15"/>
-          <path d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" stroke="#F2EFE8" stroke-width="15"/>
-        </svg>
-      </div>
-    </div>
     <div class="slider-btn-next">
       <div class="slider-btn-next__title">Next</div>
       <div class="slider-btn-next__background"></div> 
@@ -118,36 +110,20 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { directive } from 'vue-awesome-swiper'
 
 import 'swiper/swiper-bundle.css'
 
 export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
   directives: {
     swiper: directive
   },
   data() {
     return {
+      theme: 'blue',
       swiperOption: {
         on: {
           init(swiper) {
-            const content = document.querySelector('.swiper-container');
-
-            let delay = false;
-            content.addEventListener("wheel" , (e) => {
-              if(!delay){
-                e.deltaY < 0 ? swiper.slidePrev() : swiper.slideNext();
-                delay = true;
-                setTimeout(() => {
-                  delay = false;
-                }, 500)
-              }
-            });
-
             const links = Array.from(document.querySelectorAll('.slide__link'));
             links.map(link => {
               link.addEventListener('click', () => {
@@ -168,28 +144,26 @@ export default {
             })
           },
           progress (swiper) {
-            changeSlideOnProgress(swiper, 1, 'beige-theme');
-            changeSlideOnProgress(swiper, 2, 'blue-theme');
-            changeSlideOnProgress(swiper, 3, 'purple-theme');
+            const dataThemeVal = swiper.$el[0].dataset.theme;
+            const progress = swiper.progress;
+            const slideStep = 1 / (swiper.slides.length - 1);
+            const halfSlideStep = slideStep / 2;
 
-            function changeSlideOnProgress(swiper, slideIndex, themeClass){
-              let progress = swiper.progress;
-              let slideStep = 1 / (swiper.slides.length - 1);
-              let halfSlideStep = slideStep / 2;
+            changeSlideOnProgress(1, 'beige-theme');
+            changeSlideOnProgress(2, 'blue-theme');
+            changeSlideOnProgress(3, 'purple-theme');
 
-              if(slideIndex == 0){
-                console.log(progress);
-                if(progress <= halfSlideStep){
-                  document.body.classList.add(themeClass)
-                } else {
-                  document.body.classList.remove(themeClass)
+            function changeSlideOnProgress(slideIndex, themeClass){
+              if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
+                if(dataThemeVal !== themeClass){
+                  swiper.$el[0].dataset.theme = themeClass;
+                  document.body.classList.add(themeClass);
+                  swiper.slides[slideIndex].classList.add('slide_progress-active');
                 }
               } else {
-                if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
-                  document.body.classList.add(themeClass)
-                  swiper.slides[slideIndex].classList.add('slide_progress-active');
-                } else {
-                  document.body.classList.remove(themeClass)
+                if(dataThemeVal == themeClass){
+                  document.body.classList.remove(themeClass);
+                  swiper.$el[0].dataset.theme = 'default-theme';
                   swiper.slides[slideIndex].classList.remove('slide_progress-active');
                 }
               }
