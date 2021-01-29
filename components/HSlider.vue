@@ -154,18 +154,22 @@ export default {
             changeSlideOnProgress(3, 'purple-theme');
 
             function changeSlideOnProgress(slideIndex, themeClass){
-              if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
-                if(dataThemeVal !== themeClass){
-                  swiper.$el[0].dataset.theme = themeClass;
-                  document.body.classList.add(themeClass);
-                  swiper.slides[slideIndex].classList.add('slide_progress-active');
+              if(progress > halfSlideStep){
+                if((progress > (halfSlideStep) + (slideStep * (slideIndex - 1))) && (progress <= (slideStep * slideIndex) + halfSlideStep)){
+                  if(dataThemeVal !== themeClass){
+                    swiper.$el[0].dataset.theme = themeClass;
+                    document.body.classList.add(themeClass);
+                    swiper.slides[slideIndex].classList.add('slide_progress-active');
+                  }
+                } else {
+                  if(dataThemeVal == themeClass){
+                    document.body.classList.remove(themeClass);
+                    swiper.slides[slideIndex].classList.remove('slide_progress-active');
+                  }
                 }
               } else {
-                if(dataThemeVal == themeClass){
                   document.body.classList.remove(themeClass);
                   swiper.$el[0].dataset.theme = 'default-theme';
-                  swiper.slides[slideIndex].classList.remove('slide_progress-active');
-                }
               }
             }
           },
