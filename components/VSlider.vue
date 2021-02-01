@@ -5,19 +5,7 @@
         <HSlider />
       </div>
       <div class="swiper-slide slide">
-        <div class="slide-container container">
-          
-        </div>
-      </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          
-        </div>
-      </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          
-        </div>
+        <WorkSlider />
       </div>
     </div>
     <div class="slider-static container">
@@ -44,7 +32,7 @@ export default {
     return {
       swiperOption: {
         direction: 'vertical',
-        theme: '1123',
+        allowTouchMove: false,
         on: {
           init(swiper) {
             const content = document.querySelector('.v-slider');
@@ -64,16 +52,19 @@ export default {
             let progress = swiper.progress;
             let slideStep = 1 / (swiper.slides.length - 1);
             let halfSlideStep = slideStep / 2;
+
             const hSlider = document.querySelector('.h-slider');
+            const wFirstSlide = document.querySelector('.w-slide');
 
             if(progress <= halfSlideStep){
               let themeClass = hSlider.dataset.theme;
-              console.log(themeClass);
               if(themeClass && themeClass != 'default-theme'){
                 document.body.classList.add(hSlider.dataset.theme)
               }
+              wFirstSlide.classList.remove('active');
             } else {
-              document.body.classList.remove(hSlider.dataset.theme)
+              document.body.classList.remove(hSlider.dataset.theme);
+              wFirstSlide.classList.add('active');
             }
           },
         }
