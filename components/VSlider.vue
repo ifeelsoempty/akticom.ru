@@ -33,6 +33,7 @@ export default {
       swiperOption: {
         direction: 'vertical',
         allowTouchMove: false,
+        spaceBetween: 100,
         on: {
           init(swiper) {
             const content = document.querySelector('.v-slider');
@@ -40,11 +41,20 @@ export default {
             let delay = false;
             content.addEventListener("wheel" , (e) => {
               if(!delay){
+                let delayDuration = 0;
+                
+                if(swiper.realIndex === 0) {
+                  delayDuration = 1000
+                } else {
+                  delayDuration = 500
+                }
+
                 e.deltaY < 0 ? swiper.slidePrev() : swiper.slideNext();
                 delay = true;
+
                 setTimeout(() => {
                   delay = false;
-                }, 500)
+                }, delayDuration)
               }
             });
           },
@@ -67,6 +77,19 @@ export default {
               wFirstSlide.classList.add('active');
             }
           },
+
+          // Work slider hotfix
+          slideChange(swiper){
+            const wSlider = document.querySelector('.w-slider');
+
+            if(swiper.realIndex === 0){
+              wSlider.classList.remove('active');
+            } else {
+              setTimeout(() => {
+                wSlider.classList.add('active');
+              }, 1000);
+            }
+          }
         }
       }
     }
