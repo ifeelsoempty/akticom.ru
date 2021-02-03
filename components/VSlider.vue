@@ -1,11 +1,11 @@
 <template>
-  <div class="v-slider" v-swiper:mySwiper="swiperOption">
+  <div class="v-slider" @slideChange="onSlideChange" v-swiper:mySwiper="swiperOption">
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
-        <HSlider />
+        <HSlider v-bind:isActive = "activeSlide === 1 ? true : false"/>
       </div>
       <div class="swiper-slide slide">
-        <WorkSlider />
+        <WorkSlider v-bind:isActive = "activeSlide === 2 ? true : false"/>
       </div>
     </div>
     <div class="slider-static container">
@@ -30,10 +30,13 @@ export default {
   },
   data() {
     return {
+      activeSlide: 1,
       swiperOption: {
         direction: 'vertical',
         allowTouchMove: false,
         spaceBetween: 100,
+        speed: 500,
+        mousewheelControl: true,
         on: {
           init(swiper) {
             const content = document.querySelector('.v-slider');
@@ -41,20 +44,12 @@ export default {
             let delay = false;
             content.addEventListener("wheel" , (e) => {
               if(!delay){
-                let delayDuration = 0;
-                
-                if(swiper.realIndex === 0) {
-                  delayDuration = 1000
-                } else {
-                  delayDuration = 500
-                }
-
                 e.deltaY < 0 ? swiper.slidePrev() : swiper.slideNext();
                 delay = true;
 
                 setTimeout(() => {
                   delay = false;
-                }, delayDuration)
+                }, 525)
               }
             });
           },
@@ -64,36 +59,25 @@ export default {
             let halfSlideStep = slideStep / 2;
 
             const hSlider = document.querySelector('.h-slider');
-            const wFirstSlide = document.querySelector('.w-slide');
 
             if(progress <= halfSlideStep){
               let themeClass = hSlider.dataset.theme;
               if(themeClass && themeClass != 'default-theme'){
                 document.body.classList.add(hSlider.dataset.theme)
               }
-              wFirstSlide.classList.remove('active');
             } else {
               document.body.classList.remove(hSlider.dataset.theme);
-              wFirstSlide.classList.add('active');
             }
           },
-
-          // Work slider hotfix
-          slideChange(swiper){
-            const wSlider = document.querySelector('.w-slider');
-
-            if(swiper.realIndex === 0){
-              wSlider.classList.remove('active');
-            } else {
-              setTimeout(() => {
-                wSlider.classList.add('active');
-              }, 1000);
-            }
-          }
         }
       }
     }
   },
+  methods: {
+    onSlideChange: function (swiper) {
+      this.activeSlide = swiper.realIndex + 1;
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,15 @@
 <template>
-  <div class="w-slider">
+  <div class="w-slider" v-bind:class="{ 'w-slider_active': isActive }">
+    <div class="w-slider__static container">
+      <div class="w-progress">
+        <div class="w-progress__number"></div>
+        <div class="w-progress__line">
+          <div class="w-progress__underline"></div>
+        </div>
+      </div>
+    </div>
     <div class="w-slides">
-      <div class="w-slide active">
+      <div :class="{ active: activeSlide === 1 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_blue">
@@ -14,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 2 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_yellow">
@@ -27,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 3 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_purple">
@@ -40,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 4 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_red">
@@ -53,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 5 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_dark-yellow">
@@ -66,7 +74,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 6 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_dark-blue">
@@ -79,7 +87,7 @@
           </div>
         </div>
       </div>
-      <div class="w-slide">
+      <div :class="{ active: activeSlide === 7 }" class="w-slide">
         <div class="container">
           <div class="w-slider__background">
             <div class="w-slider__line w-slider__line_gray">
@@ -99,29 +107,39 @@
 <script>
 
 export default {
+  props: {
+    isActive: Boolean,
+  },
   data() {
     return {
-      activeSlide: 1,
+      activeSlide: 0,
       slideAmount: 7,
       transitionDelay: 500,
       delay: false,
-      sDelay: true,
-      isSliderActive: false,
+      timeoutID: '',
     }
   },
   watch: {
-    activeSlide: function(val) {
-      let slides = document.querySelectorAll('.w-slide');
-      let activeSlideEl = slides[val - 1];
-
-      // Remove active class from prev slide
-      for(const slide of slides){
-        slide.classList.remove('active');
+    isActive: function(isActive) {
+      if(isActive){
+        this.activeSlide = 1;
+        this.delay = true;
+      } else {
+        this.activeSlide = 0;
+        this.delay = false;
       }
-
-      // Add active class on change slide
-      activeSlideEl.classList.add('active');
-    }
+    },
+    activeSlide: function(activeSlide) {
+      this.updateProgress(activeSlide);
+    },
+    delay: function(delay) {
+      clearTimeout(this.timeoutID);
+      if(delay){
+        this.timeoutID = setTimeout(() => {
+          this.delay = false;
+        }, this.transitionDelay * 2)
+      }
+    },
   },
   mounted() {
     const wSlider = document.querySelector('.w-slider');
@@ -130,10 +148,7 @@ export default {
   },
   methods: {
     onWheel: function (e) {
-
-      const wSlider = document.querySelector('.w-slider');
-
-      if(wSlider.classList.contains('active')){
+      if(this.isActive){
         // Stop v-slider wheel propagation
         if(this.delay || this.activeSlide !== 1 || e.deltaY > 0){
           e.stopPropagation()
@@ -151,11 +166,17 @@ export default {
             }
           }
           this.delay = true;
-          setTimeout(() => {
-            this.delay = false;
-          }, this.transitionDelay * 2)
         }
       }
+    },
+    updateProgress: function (slideNumber) {
+      let progressUnderline = document.querySelector('.w-progress__underline');
+      let progressNumber = document.querySelector('.w-progress__number');
+      let progressPercent = ((100 / this.slideAmount) * slideNumber);
+
+      progressUnderline.style.height =`${progressPercent}%`;
+      progressNumber.style.top = `${progressPercent - 9}%`;
+      progressNumber.innerHTML = ('0' + slideNumber).slice(-2);
     }
   }
 }

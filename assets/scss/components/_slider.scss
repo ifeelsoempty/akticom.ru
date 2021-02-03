@@ -256,4 +256,56 @@
     opacity: 0;
     transition: opacity .5s, transform 1s;
   }
+  &__static{
+    height: 100%;
+    padding: 200px 0 100px 0;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    left: 0;
+    right: 0;
+  }
+  &_active {
+    .w-progress{
+      &__line{
+        transition: height 1s .5s;
+        height: 100%;
+      }
+      &__number{
+        transition: opacity .5s .55s, transform .5s .55s, top .5s;
+        transform: none;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.w-progress{
+  z-index: -1;
+  display: flex;
+  align-items: flex-start;
+  &__line{
+    position: relative;
+    background: #fff;
+    height: 0;
+    width: 1px;
+    transition: height .5s;
+  }
+  &__underline{
+    width: 3px;
+    height: 0;
+    background: #fff;
+    transition: height .5s;
+    position: absolute;
+    left: -2px;
+  }
+  &__number{
+    position: relative;
+    transform: translateY(-30px);
+    padding: 0 15px;
+    font-weight: 600;
+    opacity: 0;
+    font-size: 18px;
+  }
 }
