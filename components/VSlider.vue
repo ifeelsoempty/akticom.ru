@@ -35,7 +35,7 @@ export default {
         direction: 'vertical',
         allowTouchMove: false,
         spaceBetween: 100,
-        speed: 500,
+        speed: 1000,
         mousewheelControl: true,
         on: {
           init(swiper) {

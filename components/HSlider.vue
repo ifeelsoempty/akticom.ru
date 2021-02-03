@@ -122,9 +122,12 @@ export default {
     return {
       theme: 'blue',
       swiperOption: {
+        speed: 1000,
+        roundLengths: true,
         on: {
           init(swiper) {
             const links = Array.from(document.querySelectorAll('.slide__link'));
+            
             links.map(link => {
               link.addEventListener('click', () => {
                 let slideIndex = link.dataset.swipeTo;
@@ -179,10 +182,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.swiper-container{
-  width: 100vw;
-  height: 100vh;
-}
-</style>
