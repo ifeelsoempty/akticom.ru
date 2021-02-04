@@ -147,14 +147,15 @@
   }
   &__title{
     position: relative;
-    left: -130px;
+    left: -142px;
     margin-top: 50px;
     font-size: 80px;
     font-weight: bold;
   }
   &__dark-title{
     position: absolute;
-    left: 370px;
+    white-space: nowrap;
+    left: 357px;
     top: 219px;
     color: $black;
     font-size: 80px;
