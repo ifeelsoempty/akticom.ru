@@ -1,5 +1,8 @@
 <template>
-  <div class="v-slider" @slideChange="onSlideChange" v-swiper:mySwiper="swiperOption">
+  <div class="v-slider" 
+      v-swiper:swiper="swiperOption"
+      @slideChange="onSlideChange"
+    >
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
         <HSlider v-bind:isActive = "activeSlide === 1 ? true : false"/>
@@ -37,46 +40,61 @@ export default {
         spaceBetween: 100,
         speed: 1000,
         mousewheelControl: true,
-        on: {
-          init(swiper) {
-            const content = document.querySelector('.v-slider');
-
-            let delay = false;
-            content.addEventListener("wheel" , (e) => {
-              if(!delay){
-                e.deltaY < 0 ? swiper.slidePrev() : swiper.slideNext();
-                delay = true;
-
-                setTimeout(() => {
-                  delay = false;
-                }, 525)
-              }
-            });
-          },
-          progress (swiper) {
-            let progress = swiper.progress;
-            let slideStep = 1 / (swiper.slides.length - 1);
-            let halfSlideStep = slideStep / 2;
-
-            const hSlider = document.querySelector('.h-slider');
-
-            if(progress <= halfSlideStep){
-              let themeClass = hSlider.dataset.theme;
-              if(themeClass && themeClass != 'default-theme'){
-                document.body.classList.add(hSlider.dataset.theme)
-              }
-            } else {
-              document.body.classList.remove(hSlider.dataset.theme);
-            }
-          },
-        }
       }
     }
+  },
+  watch: {
+    activeSlide: function (activeSlide){
+      const hSlider = document.querySelector('.h-slider__swiper');
+
+      if(activeSlide === 1){
+        document.body.classList.add(hSlider.dataset.theme)
+      } else {
+        document.body.classList.remove(hSlider.dataset.theme);
+      }
+    },
   },
   methods: {
     onSlideChange: function (swiper) {
       this.activeSlide = swiper.realIndex + 1;
+    },
+    onInit: function (swiper) {
+      const content = document.querySelector('.v-slider');
+
+      let delay = false;
+      content.addEventListener("wheel" , (e) => {
+        if(!delay){
+          // Call activeSlide watcher before actual slide change to wait until slide animation is end
+          if(e.deltaY < 0){
+            if(swiper.realIndex === 1){
+              this.activeSlide = 0;
+              setTimeout(() => {
+                swiper.slidePrev()
+              }, 500)
+            } else {
+              swiper.slidePrev();
+            }
+          } else {
+            if(swiper.realIndex === 0){
+              this.activeSlide = 0;
+              setTimeout(() => {
+                swiper.slideNext();
+              }, 500)
+            } else {
+              swiper.slideNext();
+            }
+          }
+
+          delay = true;
+          setTimeout(() => {
+            delay = false;
+          }, 1550)
+        }
+      });
     }
+  },
+  mounted() {
+    this.onInit(this.swiper);
   }
 }
 </script>

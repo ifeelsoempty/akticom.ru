@@ -1,5 +1,5 @@
 <template>
-  <div class="w-slider" v-bind:class="{ 'active': isActive }">
+  <div class="w-slider" :class="{ 'active': isActive }">
     <div class="w-slider__static container">
       <div class="w-progress">
         <div class="w-progress__number"></div>

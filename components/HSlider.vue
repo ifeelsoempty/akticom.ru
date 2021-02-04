@@ -1,110 +1,112 @@
 <template>
-  <div class="h-slider" v-swiper:mySwiper="swiperOption">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          <div class="slide__inner">
-            <div class="slide__content">
-              <div class="slide__subtitle">
-                Akticom - это digital-студия
+  <div class="h-slider" :class="{ 'active': isActive }">
+    <div class="h-slider__swiper" v-swiper:mySwiper="swiperOption">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide">
+          <div class="slide-container container">
+            <div class="slide__inner">
+              <div class="slide__content">
+                <div class="slide__subtitle">
+                  Akticom - это digital-студия
+                </div>
+                <div class="slide__title">
+                  Решаем digital задачи
+                </div>
+                <div class="slide__navbar">
+                  <div class="slide__contact-us">Say Hello</div>
+                  <ul class="slide__nav">
+                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                  </ul>
+                </div>
               </div>
-              <div class="slide__title">
-                Решаем digital задачи
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide slide">
+          <div class="slide-container container">
+            <div class="slide__inner">
+              <div class="slide__content">
+                <div class="slide__subtitle">
+                  Проектируем крутые сайты
+                </div>
+                <div class="slide__title">
+                  Решаем digital задачи
+                </div>
+                <div class="slide__navbar">
+                  <div class="slide__contact-us">Say Hello</div>
+                  <ul class="slide__nav">
+                    <li><a class="slide__link slide__link_active">Разработка</a></li>
+                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                  </ul>
+                </div>
               </div>
-              <div class="slide__navbar">
-                <div class="slide__contact-us">Say Hello</div>
-                <ul class="slide__nav">
-                  <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
-                  <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
-                  <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
-                </ul>
+              <div class="slide-photo">
+                <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-1_1.png" alt="">
+                <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-1_2.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide slide">
+          <div class="slide-container container">
+            <div class="slide__inner">
+              <div class="slide__content">
+                <div class="slide__subtitle">
+                  Проектируем крутые сайты
+                </div>
+                <div class="slide__title">
+                  Решаем digital задачи
+                </div>
+                <div class="slide__navbar">
+                  <div class="slide__contact-us">Say Hello</div>
+                  <ul class="slide__nav">
+                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link slide__link_active">Сопровождение</a></li>
+                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="slide-photo">
+                <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-2_2.png" alt="">
+                <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-2_1.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide slide">
+          <div class="slide-container container">
+            <div class="slide__inner">
+              <div class="slide__content">
+                <div class="slide__subtitle">
+                  Проектируем крутые сайты
+                </div>
+                <div class="slide__title">
+                  Решаем digital задачи
+                </div>
+                <div class="slide__navbar">
+                  <div class="slide__contact-us">Say Hello</div>
+                  <ul class="slide__nav">
+                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link slide__link_active">Реклама</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="slide-photo">
+                <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-3_1.png" alt="">
+                <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-3_2.png" alt="">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          <div class="slide__inner">
-            <div class="slide__content">
-              <div class="slide__subtitle">
-                Проектируем крутые сайты
-              </div>
-              <div class="slide__title">
-                Решаем digital задачи
-              </div>
-              <div class="slide__navbar">
-                <div class="slide__contact-us">Say Hello</div>
-                <ul class="slide__nav">
-                  <li><a class="slide__link slide__link_active">Разработка</a></li>
-                  <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
-                  <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="slide-photo">
-              <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-1_1.png" alt="">
-              <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-1_2.png" alt="">
-            </div>
-          </div>
-        </div>
+      <div class="slider-btn-next">
+        <div class="slider-btn-next__title">Next</div>
+        <div class="slider-btn-next__background"></div> 
       </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          <div class="slide__inner">
-            <div class="slide__content">
-              <div class="slide__subtitle">
-                Проектируем крутые сайты
-              </div>
-              <div class="slide__title">
-                Решаем digital задачи
-              </div>
-              <div class="slide__navbar">
-                <div class="slide__contact-us">Say Hello</div>
-                <ul class="slide__nav">
-                  <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
-                  <li><a class="slide__link slide__link_active">Сопровождение</a></li>
-                  <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="slide-photo">
-              <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-2_2.png" alt="">
-              <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-2_1.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide slide">
-        <div class="slide-container container">
-          <div class="slide__inner">
-            <div class="slide__content">
-              <div class="slide__subtitle">
-                Проектируем крутые сайты
-              </div>
-              <div class="slide__title">
-                Решаем digital задачи
-              </div>
-              <div class="slide__navbar">
-                <div class="slide__contact-us">Say Hello</div>
-                <ul class="slide__nav">
-                  <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
-                  <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
-                  <li><a class="slide__link slide__link_active">Реклама</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="slide-photo">
-              <img class="slide-photo__underlay" src="@/assets/images/slider/slide-photo-3_1.png" alt="">
-              <img class="slide-photo__overlay" src="@/assets/images/slider/slide-photo-3_2.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slider-btn-next">
-      <div class="slider-btn-next__title">Next</div>
-      <div class="slider-btn-next__background"></div> 
     </div>
   </div>
 </template>
@@ -117,6 +119,9 @@ import 'swiper/swiper-bundle.css'
 export default {
   directives: {
     swiper: directive
+  },
+  props: {
+    isActive: Boolean,
   },
   data() {
     return {
