@@ -15,9 +15,9 @@
                 <div class="slide__navbar">
                   <div class="slide__contact-us">Say Hello</div>
                   <ul class="slide__nav">
-                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
-                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
-                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="3">Реклама</a></li>
                   </ul>
                 </div>
               </div>
@@ -38,8 +38,8 @@
                   <div class="slide__contact-us">Say Hello</div>
                   <ul class="slide__nav">
                     <li><a class="slide__link slide__link_active">Разработка</a></li>
-                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
-                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="3">Реклама</a></li>
                   </ul>
                 </div>
               </div>
@@ -63,9 +63,9 @@
                 <div class="slide__navbar">
                   <div class="slide__contact-us">Say Hello</div>
                   <ul class="slide__nav">
-                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="1">Разработка</a></li>
                     <li><a class="slide__link slide__link_active">Сопровождение</a></li>
-                    <li><a class="slide__link" data-swipe-to="3">Реклама</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="3">Реклама</a></li>
                   </ul>
                 </div>
               </div>
@@ -89,8 +89,8 @@
                 <div class="slide__navbar">
                   <div class="slide__contact-us">Say Hello</div>
                   <ul class="slide__nav">
-                    <li><a class="slide__link" data-swipe-to="1">Разработка</a></li>
-                    <li><a class="slide__link" data-swipe-to="2">Сопровождение</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="1">Разработка</a></li>
+                    <li><a class="slide__link" data-cursor-type="medium" data-swipe-to="2">Сопровождение</a></li>
                     <li><a class="slide__link slide__link_active">Реклама</a></li>
                   </ul>
                 </div>
@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="slider-btn-next">
+      <div class="slider-btn-next" data-cursor-type="large">
         <div class="slider-btn-next__content">
           <div class="slider-btn-next__title">Next</div>
           <svg class="slider-btn-next__arrow" width="60" height="13" viewBox="0 0 93 13" fill="none" xmlns="http://www.w3.org/2000/svg">

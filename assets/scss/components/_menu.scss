@@ -58,10 +58,6 @@
       font-weight: 800;
       width: min-content;
       -ms-grid-columns: min-content;
-      transition: opacity .25s;
-      &:hover{
-        opacity: .4;
-      }
     }
     &__links-list{
       list-style: none;

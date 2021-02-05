@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'menu_is-open': isOpen }" class="menu">
-    <div class="menu__btn" v-on:click="isOpen = !isOpen">
+    <div class="menu__btn" v-on:click="isOpen = !isOpen" data-cursor-type="medium">
       <span></span>
       <span></span>
     </div>
@@ -8,51 +8,51 @@
       <div class="menu__content container">
         <div class="menu-nav">
           <div class="menu-item">
-            <span class="menu-item__title">Разработка</span>
+            <span class="menu-item__title" data-cursor-type="large">Разработка</span>
             <ul class="menu-item__links-list">
-              <li><a class="menu-item__link" href="#">Корпоративные сайты</a></li>
-              <li><a class="menu-item__link" href="#">Промо-магазины</a></li>
-              <li><a class="menu-item__link" href="#">Промо-сайты</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Корпоративные сайты</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Промо-магазины</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Промо-сайты</a></li>
             </ul>
             <div class="menu-divider menu-item__divider">
               <div class="menu-divider__line"></div>
             </div>
           </div>
           <div class="menu-item">
-            <span class="menu-item__title">Контекстная реклама</span>
+            <span class="menu-item__title" data-cursor-type="large">Контекстная реклама</span>
             <ul class="menu-item__links-list">
-              <li><a class="menu-item__link" href="#">Контекстая реклама Google AdWords</a></li>
-              <li><a class="menu-item__link" href="#">Контекстная реклама Яндекс Директ</a></li>
-              <li><a class="menu-item__link" href="#">Колл-трекинг сайты</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Контекстая реклама Google AdWords</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Контекстная реклама Яндекс Директ</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Колл-трекинг сайты</a></li>
             </ul>
             <div class="menu-divider menu-item__divider">
               <div class="menu-divider__line"></div>
             </div>
           </div>
           <div class="menu-item">
-            <span class="menu-item__title">SEO продвижение</span>
+            <span class="menu-item__title" data-cursor-type="large">SEO продвижение</span>
             <ul class="menu-item__links-list">
-              <li><a class="menu-item__link" href="#">Продвижение по позициям</a></li>
-              <li><a class="menu-item__link" href="#">Продвижение в регионах</a></li>
-              <li><a class="menu-item__link" href="#">Продвижение интернет-магазинов</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Продвижение по позициям</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Продвижение в регионах</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Продвижение интернет-магазинов</a></li>
             </ul>
             <div class="menu-divider menu-item__divider">
               <div class="menu-divider__line"></div>
             </div>
           </div>
           <div class="menu-item">
-            <span class="menu-item__title">Аналитика</span>
+            <span class="menu-item__title" data-cursor-type="large">Аналитика</span>
             <ul class="menu-item__links-list">
-              <li><a class="menu-item__link" href="#">Анализ рынка и конкурентов</a></li>
-              <li><a class="menu-item__link" href="#">Разработка бренд платформы</a></li>
-              <li><a class="menu-item__link" href="#">Аналитика и сегментация</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Анализ рынка и конкурентов</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Разработка бренд платформы</a></li>
+              <li><a class="menu-item__link" href="#" data-cursor-type="small">Аналитика и сегментация</a></li>
             </ul>
             <div class="menu-divider menu-item__divider">
               <div class="menu-divider__line"></div>
             </div>
           </div>
           <div class="menu-item">
-            <span class="menu-item__title">Сопровождение</span>
+            <span class="menu-item__title" data-cursor-type="large">Сопровождение</span>
             <div class="menu-divider menu-item__divider">
               <div class="menu-divider__line"></div>
             </div>
