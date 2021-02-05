@@ -13,7 +13,7 @@
   }
 
   & .h-slider.active{
-    & .slider-btn-next__title {
+    & .slider-btn-next__content {
       transform: translateY(0);
       transition-duration: 1s;
       opacity: 1;
@@ -25,7 +25,7 @@
     }
   }
   & .h-slider:not(.active){
-    & .slider-btn-next__title, .slider-btn-next__background {
+    & .slider-btn-next__content, .slider-btn-next__background {
       transition-delay: 0s;
     }
   }

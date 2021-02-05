@@ -17,21 +17,40 @@
       transform: rotate(90deg);
       transition: background-color .75s, transform .6s .8s;
     }
-    &:hover &__background{
-      background: darken(#2C2A2A, 7%);
+    &:hover{
+      .slider-btn-next{
+        &__background{
+          background: darken(#2C2A2A, 7%);
+        }
+        &__arrow{
+          opacity: 1;
+          width: 100%;
+        }
+      }
     }
-    &__title{
+    &__content{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       position: absolute;
       z-index: 10;
       bottom: 75px;
-      right: 85px;
-      font-size: 25px;
-      font-weight: 100;
+      right: 75px;
       transform: translateY(50px);
       transition: transform .5s .9s, opacity .5s .9s;
       opacity: 0;
+    }
+    &__title{
       color: $white;
+      font-size: 23px;
+      font-weight: 100;
       text-transform: uppercase;
+    }
+    &__arrow{
+      width: 0;
+      opacity: 0;
+      transition: .5s opacity, .5s width;
+      margin-left: 15px;
     }
     &:hover{
       width: 350px;
