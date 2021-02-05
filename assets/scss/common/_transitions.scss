@@ -19,13 +19,13 @@
       opacity: 1;
     }
     & .slider {
-      &-btn-next__background{
-        transform: rotate(27deg);
+      &-btn-next{
+        transform: rotate(0deg);
       }
     }
   }
   & .h-slider:not(.active){
-    & .slider-btn-next__content, .slider-btn-next__background {
+    & .slider-btn-next__content, .slider-btn-next {
       transition-delay: 0s;
     }
   }

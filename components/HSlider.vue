@@ -106,7 +106,7 @@
       <div class="slider-btn-next">
         <div class="slider-btn-next__content">
           <div class="slider-btn-next__title">Next</div>
-          <svg class="slider-btn-next__arrow" width="93" height="13" viewBox="0 0 93 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="slider-btn-next__arrow" width="60" height="13" viewBox="0 0 93 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.5 6.5H91.5M91.5 6.5L86.3705 1M91.5 6.5L86.3705 12" stroke="white"/>
           </svg>
         </div>
