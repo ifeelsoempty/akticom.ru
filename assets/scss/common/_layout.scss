@@ -16,6 +16,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  cursor: none;
 }
 body{
   background-color: #2C2A2A;
@@ -28,6 +29,7 @@ body{
 *::after {
   box-sizing: border-box;
   margin: 0;
+  cursor: none;
 }
 
 .container{

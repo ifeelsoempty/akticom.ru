@@ -1,6 +1,5 @@
 .slider {
   &-btn-next{
-    cursor: pointer;
     position: absolute;
     bottom: -1px;
     right: -1px;
@@ -135,7 +134,6 @@
     }
   }
   &__link{
-    cursor: pointer;
     font-size: 22px;
     text-transform: uppercase;
     color: $white;
@@ -177,7 +175,6 @@
     right: 0;
     bottom: 0;
     max-height: 750px;
-    cursor: pointer;
     transform: translateY(50%);
     transition: transform .5s, opacity .5s;
     opacity: 0;
