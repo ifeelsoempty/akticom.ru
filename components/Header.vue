@@ -18,7 +18,7 @@
           </li>
         </ul>
       </nav>
-      <Menu class="header__burger-menu" />
+      <BurgerMenu class="header__burger-menu" />
     </div>
   </header>
 </template>

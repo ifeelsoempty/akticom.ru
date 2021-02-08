@@ -1,5 +1,5 @@
 <template>
-  <VSlider />
+  <VerticalSlider />
 </template>
 
 <script>

@@ -27,48 +27,6 @@
       width: 200%;
       left: -50%;
     }
-    &_blue{
-      background: #4784C3;
-      & svg path {
-        fill: #528ECC;
-      }
-    }
-    &_yellow{
-      background: #FFD542;
-      & svg path {
-        fill: #F4CC3E;
-      }
-    }
-    &_purple{
-      background: #8B326B;
-      & svg path {
-        fill: #843066;
-      }
-    }
-    &_red{
-      background: #DB0703;
-      & svg path {
-        fill: #CC100D;
-      }
-    }
-    &_dark-yellow{
-      background: #FBB91B;
-      & svg path {
-        fill: #FAB40C;
-      }
-    }
-    &_dark-blue{
-      background: #063F7D;
-      & svg path {
-        fill: #084384;
-      }
-    }
-    &_gray{
-      background: #3B3B3B;
-      & svg path {
-        fill: #3F3F3F;
-      }
-    }
   }
   &__rain{
     position: absolute;
@@ -154,7 +112,7 @@
   }
   &__dark-title{
     position: absolute;
-    white-space: nowrap;
+    width: 600px;
     left: 357px;
     top: 219px;
     color: $black;

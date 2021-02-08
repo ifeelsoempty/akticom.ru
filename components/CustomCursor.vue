@@ -130,8 +130,8 @@ export default {
     }
     &_default {
       & .g-cursor__point{
-        height: 10px;
-        width: 10px;
+        height: 20px;
+        width: 20px;
       }
     }
     &_hidden {

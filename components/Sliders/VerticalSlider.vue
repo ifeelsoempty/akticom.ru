@@ -5,10 +5,10 @@
     >
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
-        <HSlider v-bind:isActive = "activeSlide === 1 ? true : false"/>
+        <MainSlider :isActive = "activeSlide === 1 ? true : false"/>
       </div>
       <div class="swiper-slide slide">
-        <WorkSlider v-bind:isActive = "activeSlide === 2 ? true : false"/>
+        <WorkSlider :isActive = "activeSlide === 2 ? true : false"/>
       </div>
     </div>
     <div class="slider-static container">
@@ -27,9 +27,16 @@ import { directive } from 'vue-awesome-swiper'
 
 import 'swiper/swiper-bundle.css'
 
+import MainSlider from './MainSlider'
+import WorkSlider from './WorkSlider'
+
+
 export default {
   directives: {
     swiper: directive
+  },
+  components: {
+    MainSlider, WorkSlider
   },
   data() {
     return {
@@ -39,18 +46,17 @@ export default {
         allowTouchMove: false,
         spaceBetween: 100,
         speed: 1000,
-        mousewheelControl: true,
       }
     }
   },
   watch: {
     activeSlide: function (activeSlide){
-      const hSlider = document.querySelector('.h-slider__swiper');
+      const mainSlider = document.querySelector('.h-slider__swiper');
 
       if(activeSlide === 1){
-        document.body.classList.add(hSlider.dataset.theme)
+        document.body.classList.add(mainSlider.dataset.theme)
       } else {
-        document.body.classList.remove(hSlider.dataset.theme);
+        document.body.classList.remove(mainSlider.dataset.theme);
       }
     },
   },

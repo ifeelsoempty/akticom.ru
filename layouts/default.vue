@@ -2,7 +2,7 @@
   <div>
     <Header />
     <Nuxt />
-    <CCursor />
+    <CustomCursor />
   </div>
 </template>
 
