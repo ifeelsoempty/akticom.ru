@@ -1,8 +1,11 @@
 <template>
   <div :class="{ 'menu_is-open': isOpen }" class="menu">
-    <div class="menu__btn" v-on:click="isOpen = !isOpen" data-cursor-type="medium">
-      <span></span>
-      <span></span>
+    <div class="cursor-magnet">
+      <div class="menu__btn" v-on:click="isOpen = !isOpen" data-cursor-type="medium">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="cursor-magnet__trigger"></div>
     </div>
     <div class="menu__box">
       <div class="menu__content container">

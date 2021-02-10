@@ -21,18 +21,6 @@ export default {
       hideCursor: true,
       activeType: 'default',
       maxSize: 100,
-      cursorTypes: {
-        'default': {
-          zoom: 0.1,
-          width: 10,
-          height: 10,
-          center: 5,
-        },
-        'medium': {
-          zoom: 0.5,
-          center: 25,
-        }
-      }
     }
   },
   computed: {
@@ -41,35 +29,91 @@ export default {
     }
   },
   methods: {
+    // animate({timing, draw, duration}) {
+    //   let start = performance.now();
+
+    //   requestAnimationFrame(function animate(time) {
+    //     // timeFraction изменяется от 0 до 1
+    //     let timeFraction = (time - start) / duration;
+    //     if (timeFraction > 1) timeFraction = 1;
+
+    //     // вычисление текущего состояния анимации
+    //     let progress = timing(timeFraction);
+
+    //     draw(progress); // отрисовать её
+
+    //     if (timeFraction < 1) {
+    //       requestAnimationFrame(animate);
+    //     }
+
+    //   });
+    // },
     moveCursor(e) {
       this.xChild = e.clientX
       this.yChild = e.clientY;
     },
-    handleCursorTarget() {
-      document.addEventListener('mouseover', e => {
-        const target = e.target;
-        if (target){
-          const cursorType = target.dataset.cursorType;
-          const parent = target.closest('[data-cursor-type]');
-          if(cursorType){
-            this.activeType = cursorType
-          } else if (parent){
-            this.activeType = parent.dataset.cursorType;
-          } else {
-            this.activeType = 'default';
-          }
+    magnetMove(e) {
+      let target = e.target;
+      let realTarget = target.closest('.cursor-magnet');
+
+      if(target.classList.contains('cursor-magnet__trigger') || target.closest('.cursor-magnet')){
+        let realTargetRect = realTarget.getBoundingClientRect();
+        let transformY = (this.yChild - (realTargetRect.top + (realTargetRect.height / 2))) / 2;
+        let transformX = (this.xChild - (realTargetRect.left + (realTargetRect.width / 2))) / 2;
   
-          target.addEventListener('mouseout', e => {
-            const target = e.relatedTarget;
-            if (target){
-              const parent = target.closest('[data-cursor-type]');
-              if(!parent){
-                this.activeType = 'default';
-              }
-            }
-          })
+        realTarget.style.transform = `translate(${transformX}px,${transformY}px)`
+      }
+    },
+
+    magnetOut(e) {
+      if(!e.relatedTarget.closest('.cursor-magnet') && e.target.closest('.cursor-magnet')){
+        let realTarget = e.target.closest('.cursor-magnet');
+        
+        realTarget.style.transform = 'translate(0, 0)';
+        // this.animate({
+        //   duration: 500,
+        //   timing(timeFraction) {
+        //     return timeFraction;
+        //   },
+        //   draw(progress) {
+        //     let translate = /translate\(\s*([^\s,)]+)[ ,]([^\s,)]+)/.exec(realTarget.style.transform);
+        //     console.log(translate);
+
+        //     let newTransformX = translate[1] - (progress * translate[1]);
+        //     let newTransformY = transform[2] - (progress * transform[2]);
+
+        //     realTarget.style.transform = `translateX(${newTransformX}) translateY(${newTransformY}px)`;
+        //     // console.log(`translateX(${newTransformX}px) translateY(${newTransformY}px)`);
+        //   }
+        // })
+      }
+    },
+
+    overCursorTarget(e) {
+      const target = e.target;
+      if (target){
+        const cursorType = target.dataset.cursorType;
+        const parent = target.closest('[data-cursor-type]');
+        if(cursorType){
+          this.activeType = cursorType
+        } else if (parent){
+          this.activeType = parent.dataset.cursorType;
+        } else {
+          this.activeType = 'default';
         }
-      })
+      }
+    },
+
+    outCursorTarget(e) {
+      const target = e.relatedTarget;
+      if (target){
+        e.target.removeEventListener('mouseover', this.overCursorTarget);
+        const parent = target.closest('[data-cursor-type]');
+        if(!parent){
+          this.activeType = 'default';
+        }
+        e.target.removeEventListener('mouseout', this.outCursorTarget);
+      }
     }
   },
   mounted() {
@@ -80,70 +124,12 @@ export default {
     document.addEventListener('mouseenter', e => {
       this.hideCursor = false;
     });
-    this.handleCursorTarget();
+    
+    document.addEventListener('mouseover', this.overCursorTarget);
+    document.addEventListener('mouseout', this.outCursorTarget);
+
+    document.addEventListener('mousemove', this.magnetMove);
+    document.addEventListener('mouseout', this.magnetOut);
   }
 }
 </script>
-
-<style lang="scss">
-.g-cursor {
-    position: fixed;
-    width: 100px;
-    height: 100px;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    mix-blend-mode: exclusion;
-    pointer-events: none;
-    user-select: none;
-    backface-visibility: hidden;
-    z-index: 99999999;
-
-    &_hide {
-      opacity: 0;
-      transition: width .6s ease,
-      height .6s ease,
-      opacity .6s ease;
-    }
-
-    &__point {
-      background: #fff;
-      border-radius: 100%;
-      backface-visibility: hidden;
-      will-change: transform;
-      transition: .3s height, .3s width;
-    }
-
-    &_medium {
-      & .g-cursor__point{
-        height: 50px;
-        width: 50px;
-      }
-    }
-    &_large {
-      & .g-cursor__point{
-        height: 100px;
-        width: 100px;
-      }
-    }
-    &_default {
-      & .g-cursor__point{
-        height: 20px;
-        width: 20px;
-      }
-    }
-    &_hidden {
-      & .g-cursor__point{
-        display: none;
-      }
-    }
-    &_small {
-      & .g-cursor__point{
-        height: 25px;
-        width: 25px;
-      }
-    }
-  }
-</style>
