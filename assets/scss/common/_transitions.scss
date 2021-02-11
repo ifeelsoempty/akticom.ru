@@ -13,15 +13,14 @@
   }
 
   & .h-slider.active{
+    & .slider-btn-next{
+      visibility: visible;
+      transform: rotate(0deg);
+    }
     & .slider-btn-next__content {
       transform: translateY(0);
       transition-duration: 1s;
       opacity: 1;
-    }
-    & .slider {
-      &-btn-next{
-        transform: rotate(0deg);
-      }
     }
   }
   & .h-slider:not(.active){

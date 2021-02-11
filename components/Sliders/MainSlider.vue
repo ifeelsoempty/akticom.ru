@@ -163,8 +163,8 @@ export default {
             const halfSlideStep = slideStep / 2;
 
             changeSlideOnProgress(1, 'beige-theme');
-            changeSlideOnProgress(2, 'blue-theme');
-            changeSlideOnProgress(3, 'purple-theme');
+            changeSlideOnProgress(2, 'yellow-theme');
+            changeSlideOnProgress(3, 'red-theme');
 
             function changeSlideOnProgress(slideIndex, themeClass){
               if(progress > halfSlideStep){

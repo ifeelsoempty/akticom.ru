@@ -7,8 +7,9 @@
     height: 800px;
     z-index: 5;
     transform: rotate(90deg);
+    visibility: hidden;
     transform-origin: bottom left;
-    transition: transform .6s .8s, width .5s;
+    transition: transform .6s .8s, width .5s, visibility .6s;
     &__background{
       transform: rotate(35deg);
       width: 100%;
@@ -69,6 +70,9 @@
     transform: translateY(100px);
     z-index: 99;
     transition: transform .5s .9s, opacity .5s .9s;
+    & svg path {
+      transition: stroke $t-theme-duration;
+    }
     &__wheel{
       animation: scroll 2s ease infinite;
     }
@@ -97,9 +101,11 @@
     font-size: 90px;
     font-weight: 800;
     line-height: 80px;
+    transition: color $t-theme-duration;
   }
   &__subtitle{
     pointer-events: none;
+    transition: color $t-theme-duration;
     font-size: 20px;
     font-weight: 300;
     letter-spacing: 0.06rem;
@@ -117,6 +123,7 @@
     width: 380px;
     &::before{
       content: '';
+      transition: background-color $t-theme-duration;
       position: absolute;
       width: 1px;
       height: 200px;
@@ -138,6 +145,7 @@
     text-transform: uppercase;
     color: $white;
     position: relative;
+    transition: color $t-theme-duration;
     &::after{
       content: '';
       position: absolute;
@@ -152,7 +160,6 @@
       width: 100%;
     }
     &_active{
-      cursor: default;
       font-weight: 600;
       font-size: 24px;
       &:hover::after{
@@ -169,6 +176,7 @@
     position: relative;
     bottom: -20px;
     transform-origin: left top;
+    transition: color $t-theme-duration;
   }
   &-photo{
     position: absolute;
@@ -176,16 +184,16 @@
     bottom: 0;
     max-height: 750px;
     transform: translateY(50%);
-    transition: transform .5s, opacity .5s;
+    transition: transform $t-theme-duration, opacity .5s;
     opacity: 0;
     &__overlay{
       position: absolute;
       right: 0;
       transition: transform .5s;
       top: -5px;
-      transform: translate(-10px, -10px);
+      transform: translate(-10px, 0);
       &:hover{
-        transform: translate(0);
+        transform: translate(0, 0);
       }
     }
   }

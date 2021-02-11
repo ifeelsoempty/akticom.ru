@@ -55,90 +55,74 @@
   }
 }
 
-.blue-theme{
-  background:#0071B0;
+.yellow-theme{
+  background:#F4D560;
   & .menu__underlay{
-    background: darken(#0071B0, 5%);
-  }
-
-  & .slider-btn-next{
-    &__background{
-      background:  darken(#0071B0, 5%);;
-    }
-    &:hover .slider-btn-next__background{
-      background: darken(#0071B0, 10%);
-    }
-  }
-}
-
-.purple-theme{
-  background:#47466C;
-  & .menu__underlay{
-    background: darken(#47466C, 5%);
+    background: #D9BC4E;
   }
   & .slider-btn-next{
     &__background{
-      background:  darken(#47466C, 5%);;
+      background: #D9BC4E
     }
     &:hover .slider-btn-next__background{
-      background: darken(#47466C, 10%);
+      background: darken(#D9BC4E, 5%);
     }
   }
-}
-
-.dark-theme{
-  background: #2C2A2A;
   & .header {
-    color: $white;
+    color: $black;
   }
   & .header__logo path{
-    fill: $white;
+    fill: $black;
   }
   & .header-nav__link a{
-    color: $white;
+    color: $black;
   }
   & .slide__title {
-    color: $white;
+    color: $black;
   }
   & .slide__subtitle {
-    color: $white;
+    color: $black;
   }
   & .menu__btn span{
-    border-bottom: 2px solid $white;
-  }
-  & .menu__underlay{
-    background: darken(#2C2A2A, 5%);
+    border-bottom: 2px solid $black;
   }
   & .menu-item__link{
-    color: $white;
+    color: $black;
   }
   & .menu-divider__line{
-    background: $white;
+    background: $black;
   }
   & .menu__social-item svg path {
-    fill: $white;
+    fill: $black;
   }
   & .slide{
-    color: $white;
+    color: $black;
   }
   & .slide__link{
-    color: $white;
+    color: $black;
     &::after{
-      background:$white;
+      background: $black;
     }
   }
   & .slide__nav::before{
-    background: $white;
+    background: $black;
+  }
+  & .slider-mouse svg path{
+    stroke: $black;
+  }
+}
+
+.red-theme{
+  background:#EC6262;
+  & .menu__underlay{
+    background: #AE4C4C;
   }
   & .slider-btn-next{
     &__background{
-      background: #2C2A2A;
+      background: #AE4C4C
     }
     &:hover .slider-btn-next__background{
-      background: darken(#2C2A2A, 10%);
+      background: darken(#AE4C4C, 5%)
     }
-  }
-  & .slider-mouse svg path{
-    stroke: $white;
   }
 }
