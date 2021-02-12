@@ -1,0 +1,60 @@
+.footer{
+  width: 100%;
+  padding-bottom: 40px;
+  &__hr{
+    width: 100%;
+    border: 1px solid #323232;
+    margin-bottom: 40px;
+  }
+  &__block{
+    margin-right: 100px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  &__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__left-block{
+    display: flex;
+    align-items: center;
+  }
+  &__center-block{
+    display: flex;
+  }
+  &__logo{
+    width: 30px;
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  &__copyright{
+    margin-left: 20px;
+  }
+  &__address-item{
+    margin-right: 50px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  &__city{
+    font-weight: 600;
+  }
+  &__phone{
+    margin-top: 10px;
+  }
+  &__socials{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 -10px;
+  }
+  &__email{
+    margin-top: 10px;
+  }
+  &__social-item{
+    margin-right: 10px;
+  }
+}

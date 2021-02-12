@@ -10,16 +10,19 @@
       <div class="swiper-slide slide">
         <WorkSlider :isActive = "activeSlide === 2 ? true : false"/>
       </div>
-    </div>
-    <div class="slider-static container">
-      <div class="cursor-magnet">
-        <div class="slider-mouse">
-          <svg width="34px" height="50px" viewBox="0 0 247 390" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path class="slider-mouse__wheel" d="M123.359,79.775l0,72.843" stroke="#F2EFE8" stroke-width="15"/>
-            <path d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" stroke="#F2EFE8" stroke-width="15"/>
-          </svg>
+      <div class="swiper-slide slide">
+        <div class="c-slide" :class="{ active: activeSlide === 3 ? true : false }">
+          <div class="c-slide__container container">
+            <div class="c-slide__inner">
+              <div class="c-slide__content">
+                <div class="c-slide__subtitle">Есть интересная задача?</div>
+                <div data-cursor-type="large" class="c-slide__title">Давайте обсудим</div>
+                <img class="c-slide__arrow" src="@/assets/images/arrow.svg" alt="">
+              </div>
+              <Footer class="c-slide__footer" />
+            </div>
+          </div>
         </div>
-        <div class="cursor-magnet__trigger"></div>
       </div>
     </div>
   </div>
@@ -32,6 +35,7 @@ import 'swiper/swiper-bundle.css'
 
 import MainSlider from './MainSlider'
 import WorkSlider from './WorkSlider'
+import Footer from '../Footer'
 
 
 export default {
@@ -39,7 +43,7 @@ export default {
     swiper: directive
   },
   components: {
-    MainSlider, WorkSlider
+    MainSlider, WorkSlider, Footer
   },
   data() {
     return {
@@ -72,6 +76,7 @@ export default {
 
       let delay = false;
       content.addEventListener("wheel" , (e) => {
+        console.log(e.target);
         if(!delay){
           // Call activeSlide watcher before actual slide change to wait until slide animation is end
           if(e.deltaY < 0){
@@ -97,7 +102,7 @@ export default {
           delay = true;
           setTimeout(() => {
             delay = false;
-          }, 1550)
+          }, 2500)
         }
       });
     }

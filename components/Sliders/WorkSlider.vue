@@ -12,9 +12,8 @@
       <WorkSlide 
         v-for="(slide, index) in slides" 
         :key="index" 
-        :slideIndex="index"
-        :slideData="slide" 
-        :activeSlide="activeSlide" 
+        :slideData="slide"
+        :isActive="(activeSlide === (index + 1)) && isActive"
       />
     </div>
   </div>
@@ -104,22 +103,21 @@ export default {
           logoColor: '#3F3F3F',
         },
       ],
-      activeSlide: 0,
-      slideAmount: 7,
-      transitionDelay: 500,
+      activeSlide: 1,
+      transitionDuration: 500,
       delay: false,
       timeoutID: '',
     }
   },
+  mounted() {
+    const wSlider = document.querySelector('.w-slider');
+
+    wSlider.addEventListener("wheel" , (e) => this.onWheel(e))
+  },
   watch: {
     isActive: function(isActive) {
-      if(isActive){
-        this.activeSlide = 1;
-        this.delay = true;
-      } else {
-        this.activeSlide = 0;
-        this.delay = false;
-      }
+      this.delay = true;
+      if(isActive) this.updateProgress(this.activeSlide);
     },
     activeSlide: function(activeSlide) {
       this.updateProgress(activeSlide);
@@ -129,23 +127,17 @@ export default {
       if(delay){
         this.timeoutID = setTimeout(() => {
           this.delay = false;
-        }, this.transitionDelay * 2)
+        }, this.transitionDuration * 2)
       }
     },
-  },
-  mounted() {
-    const wSlider = document.querySelector('.w-slider');
-
-    wSlider.addEventListener("wheel" , (e) => this.onWheel(e))
   },
   methods: {
     onWheel: function (e) {
       if(this.isActive){
         // Stop v-slider wheel propagation
-        if(this.delay || this.activeSlide !== 1 || e.deltaY > 0){
+        if(this.delay || !((this.activeSlide === 1 && e.deltaY < 0) || (this.activeSlide === this.slidesAmount && e.deltaY > 0))){
           e.stopPropagation()
         }
-  
         // Change slide with delay
         if(!this.delay){
           if(e.deltaY < 0){
@@ -153,7 +145,7 @@ export default {
               this.activeSlide = this.activeSlide - 1;
             }
           } else {
-            if(this.activeSlide < this.slideAmount){
+            if(this.activeSlide < this.slidesAmount){
               this.activeSlide = this.activeSlide + 1;
             }
           }
@@ -164,12 +156,17 @@ export default {
     updateProgress: function (slideNumber) {
       let progressUnderline = document.querySelector('.w-progress__underline');
       let progressNumber = document.querySelector('.w-progress__number');
-      let progressPercent = ((100 / this.slideAmount) * slideNumber);
+      let progressPercent = ((100 / this.slidesAmount) * slideNumber);
 
       progressUnderline.style.height =`${progressPercent}%`;
       progressNumber.style.top = `${progressPercent - 9}%`;
       progressNumber.innerHTML = ('0' + slideNumber).slice(-2);
+    },
+  },
+  computed: {
+    slidesAmount() {
+      return this.slides.length;
     }
-  }
+  },
 }
 </script>

@@ -112,6 +112,17 @@
         </div>
         <div class="slider-btn-next__background"></div> 
       </div>
+      <div class="slider-static container">
+        <div class="cursor-magnet">
+          <div class="slider-mouse">
+            <svg width="34px" height="50px" viewBox="0 0 247 390" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <path class="slider-mouse__wheel" d="M123.359,79.775l0,72.843" stroke="#F2EFE8" stroke-width="15"/>
+              <path d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" stroke="#F2EFE8" stroke-width="15"/>
+            </svg>
+          </div>
+          <div class="cursor-magnet__trigger"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

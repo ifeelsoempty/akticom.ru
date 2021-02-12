@@ -29,27 +29,8 @@
 export default {
   props: {
     slideData: Object,
-    activeSlide: Number,
-    slideIndex: Number,
+    isActive: Boolean
   },
-  data() {
-    return {
-      isActive: false,
-    }
-  },
-  watch: {
-    activeSlide: function(val) {
-      if(this.slideIndex + 1 === this.activeSlide){
-        this.isActive = true;
-      } else {
-        this.isActive = false;
-      }
-    }
-  },
-  mounted: function () {
-  },
-  computed: {
-  }
 }
 </script>
 
