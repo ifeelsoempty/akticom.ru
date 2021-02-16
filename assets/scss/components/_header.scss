@@ -4,6 +4,7 @@
     padding: 35px 0;
     color: $white;
     position: absolute;
+    overflow: hidden;
     width: 100vw;
     z-index: 999;
     &__wrapper{
@@ -56,6 +57,14 @@
         &:nth-child(3){
           transition-delay: .45s;
         }
+      }
+    }
+  }
+
+  @media screen and(max-width: 1000px){
+    .header {
+      &-nav{
+        display: none;
       }
     }
   }

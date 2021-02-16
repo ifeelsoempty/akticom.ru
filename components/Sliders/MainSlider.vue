@@ -120,6 +120,9 @@
               <path d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" stroke="#F2EFE8" stroke-width="15"/>
             </svg>
           </div>
+          <div class="slider-scroll">
+            <img src="@/assets/images/scroll.png" alt="">
+          </div>
           <div class="cursor-magnet__trigger"></div>
         </div>
       </div>

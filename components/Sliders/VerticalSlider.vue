@@ -76,7 +76,6 @@ export default {
 
       let delay = false;
       content.addEventListener("wheel" , (e) => {
-        console.log(e.target);
         if(!delay){
           // Call activeSlide watcher before actual slide change to wait until slide animation is end
           if(e.deltaY < 0){
@@ -102,7 +101,7 @@ export default {
           delay = true;
           setTimeout(() => {
             delay = false;
-          }, 2500)
+          }, 1000)
         }
       });
     }
