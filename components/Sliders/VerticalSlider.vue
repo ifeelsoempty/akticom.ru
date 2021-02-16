@@ -48,6 +48,9 @@ export default {
   data() {
     return {
       activeSlide: 1,
+      delay: false,
+      touchXDown: 0,
+      touchYDown: 0,
       swiperOption: {
         direction: 'vertical',
         allowTouchMove: false,
@@ -68,46 +71,75 @@ export default {
     },
   },
   methods: {
-    onSlideChange: function (swiper) {
-      this.activeSlide = swiper.realIndex + 1;
-    },
-    onInit: function (swiper) {
+    onInit: function () {
       const content = document.querySelector('.v-slider');
 
-      let delay = false;
-      content.addEventListener("wheel" , (e) => {
-        if(!delay){
-          // Call activeSlide watcher before actual slide change to wait until slide animation is end
-          if(e.deltaY < 0){
-            if(swiper.realIndex === 1){
-              this.activeSlide = 0;
-              setTimeout(() => {
-                swiper.slidePrev()
-              }, 500)
-            } else {
-              swiper.slidePrev();
-            }
-          } else {
-            if(swiper.realIndex === 0){
-              this.activeSlide = 0;
-              setTimeout(() => {
-                swiper.slideNext();
-              }, 500)
-            } else {
-              swiper.slideNext();
-            }
-          }
-
-          delay = true;
-          setTimeout(() => {
-            delay = false;
-          }, 1000)
+      content.addEventListener("wheel" , this.handleWheel, false);
+      content.addEventListener("touchstart" , this.handleTouchStart, false);
+      content.addEventListener("touchmove" , this.handleTouchMove, false);
+    },
+    changeSlide: function(to = 'next', delay = 0) {
+      if(!this.delay){
+        if(delay){
+          this.activeSlide = 0;
         }
-      });
+        // Call activeSlide watcher before actual slide change to wait until slide animation is end
+        setTimeout(() => {
+          if(to === 'prev'){
+            this.swiper.slidePrev()
+          } else if(to === 'next'){
+            this.swiper.slideNext()
+          }
+        }, delay)
+        
+        this.delay = true;
+        
+        setTimeout(() => {
+          this.delay = false;
+        }, 1000)
+      }
+    },
+    onSlideChange: function () {
+      this.activeSlide = this.swiper.realIndex + 1;
+    },
+    handleWheel: function (e) {
+      if(e.deltaY < 0){
+        if(this.swiper.realIndex === 1){
+          this.changeSlide('prev', 500);
+        } else {
+          this.changeSlide('prev');
+        }
+      } else {
+        if(this.swiper.realIndex === 0){
+          this.changeSlide('next', 500);
+        } else {
+          this.changeSlide('next')
+        }
+      }
+    },
+    handleTouchStart: function (e) {
+      const firstTouch = e.touches[0];
+      this.touchXDown = firstTouch.clientX;
+      this.touchYDown = firstTouch.clientY;
+    },
+    handleTouchMove: function (e) {
+      var xUp = e.touches[0].clientX;
+      var yUp = e.touches[0].clientY;
+
+      var xDiff = this.touchXDown - xUp;
+      var yDiff = this.touchYDown - yUp;
+      
+      if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
+        if ( yDiff > 0 ) {
+          this.changeSlide('next', 500)
+        } else {
+          this.changeSlide('prev', 500)
+        }
+      }
     }
   },
   mounted() {
-    this.onInit(this.swiper);
+    this.onInit();
   }
 }
 </script>

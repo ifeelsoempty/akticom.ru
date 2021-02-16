@@ -4,8 +4,8 @@
   width: 100vw;
   overflow: hidden;
   &__background{
-    width: 400px;
     min-width: 400px;
+    height: 100%;
     margin-left: 150px;
     position: relative;
     display: flex;
@@ -17,6 +17,7 @@
     height: 0;
     overflow: hidden;
     position: relative;
+    max-height: 100%;
     transition: height .5s;
     position: absolute;
     top:0;
@@ -178,5 +179,37 @@
     font-weight: 600;
     opacity: 0;
     font-size: 18px;
+  }
+}
+
+@media screen and(max-width: 1200px){
+  .w-slide{
+    &__inner{
+      flex-direction: column;
+    }
+    &__info{
+      padding: 0;
+      margin: 0;
+    }
+    &__title{
+      display: none;
+    }
+    &__link{
+      display: none;
+    }
+    &__desc{
+      margin-bottom: 50px 
+    }
+  }
+  .w-slider{
+    &__pic{
+      width: 50vw;
+      min-width: 285px;
+    }
+    &__background{
+      width: 200px;
+      min-width: 200px;
+      margin-left: 100px;
+    }
   }
 }
