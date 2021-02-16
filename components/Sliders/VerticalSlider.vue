@@ -5,13 +5,13 @@
     >
     <div class="swiper-wrapper">
       <div class="swiper-slide slide">
-        <MainSlider :isActive = "activeSlide === 1 ? true : false"/>
+        <MainSlider :isActive = "activeSlide === 1"/>
       </div>
       <div class="swiper-slide slide">
-        <WorkSlider :isActive = "activeSlide === 2 ? true : false"/>
+        <WorkSlider :isActive = "activeSlide === 2"/>
       </div>
       <div class="swiper-slide slide">
-        <div class="c-slide" :class="{ active: activeSlide === 3 ? true : false }">
+        <div class="c-slide" :class="{ active: activeSlide === 3}">
           <div class="c-slide__container container">
             <div class="c-slide__inner">
               <div class="c-slide__content">
@@ -59,30 +59,23 @@ export default {
       }
     }
   },
-  watch: {
-    activeSlide: function (activeSlide){
-      const mainSlider = document.querySelector('.h-slider__swiper');
-
-      if(activeSlide === 1){
-        document.body.classList.add(mainSlider.dataset.theme)
-      } else {
-        document.body.classList.remove(mainSlider.dataset.theme);
-      }
-    },
+  mounted() {
+    this.onInit();
   },
   methods: {
     onInit: function () {
-      const content = document.querySelector('.v-slider');
+      const slider = document.querySelector('.v-slider');
 
-      content.addEventListener("wheel" , this.handleWheel, false);
-      content.addEventListener("touchstart" , this.handleTouchStart, false);
-      content.addEventListener("touchmove" , this.handleTouchMove, false);
+      slider.addEventListener("wheel" , this.handleWheel, false);
+      slider.addEventListener("touchstart" , this.handleTouchStart, false);
+      slider.addEventListener("touchmove" , this.handleTouchMove, false);
     },
     changeSlide: function(to = 'next', delay = 0) {
       if(!this.delay){
         if(delay){
           this.activeSlide = 0;
         }
+
         // Call activeSlide watcher before actual slide change to wait until slide animation is end
         setTimeout(() => {
           if(to === 'prev'){
@@ -123,11 +116,11 @@ export default {
       this.touchYDown = firstTouch.clientY;
     },
     handleTouchMove: function (e) {
-      var xUp = e.touches[0].clientX;
-      var yUp = e.touches[0].clientY;
+      let xUp = e.touches[0].clientX;
+      let yUp = e.touches[0].clientY;
 
-      var xDiff = this.touchXDown - xUp;
-      var yDiff = this.touchYDown - yUp;
+      let xDiff = this.touchXDown - xUp;
+      let yDiff = this.touchYDown - yUp;
       
       if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
         if ( yDiff > 0 ) {
@@ -138,9 +131,17 @@ export default {
       }
     }
   },
-  mounted() {
-    this.onInit();
-  }
+  watch: {
+    activeSlide: function (activeSlide){
+      const mainSlider = document.querySelector('.h-slider__swiper');
+
+      if(activeSlide === 1){
+        document.body.classList.add(mainSlider.dataset.theme)
+      } else {
+        document.body.classList.remove(mainSlider.dataset.theme);
+      }
+    },
+  },
 }
 </script>
 

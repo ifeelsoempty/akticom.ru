@@ -110,9 +110,77 @@ export default {
     }
   },
   mounted() {
-    const wSlider = document.querySelector('.w-slider');
+    this.onInit();
+  },
+  methods: {
+    onInit: function () {
+      const slider = document.querySelector('.w-slider');
 
-    wSlider.addEventListener("wheel" , (e) => this.onWheel(e))
+      slider.addEventListener("wheel" , this.handleWheel, false)
+      slider.addEventListener("touchstart" , this.handleTouchStart, false);
+      slider.addEventListener("touchmove" , this.handleTouchMove, false);
+    },
+    changeSlide: function (to) {
+      if(!this.delay){
+        if(to === 'next'){
+          if(this.activeSlide < this.slidesAmount){
+            this.activeSlide = this.activeSlide + 1;
+          }
+        } else if (to === 'prev'){
+          if(this.activeSlide > 1){
+            this.activeSlide = this.activeSlide - 1;
+          }
+        }
+        this.delay = true;
+      }
+    },
+    handleWheel: function (e) {
+      if(this.isActive){
+        // Stop v-slider wheel propagation
+        if(this.delay || !((this.activeSlide === 1 && e.deltaY < 0) || (this.activeSlide === this.slidesAmount && e.deltaY > 0))){
+          e.stopPropagation()
+        }
+        // Change slide with delay
+        if(e.deltaY > 0){
+          this.changeSlide('next')
+        } else {
+          this.changeSlide('prev')
+        }
+      }
+    },
+    handleTouchStart: function (e) {
+      const firstTouch = e.touches[0];
+      this.touchXDown = firstTouch.clientX;
+      this.touchYDown = firstTouch.clientY;
+    },
+    handleTouchMove: function (e) {
+      let xUp = e.touches[0].clientX;
+      let yUp = e.touches[0].clientY;
+
+      let xDiff = this.touchXDown - xUp;
+      let yDiff = this.touchYDown - yUp;
+
+      if(this.delay || !((this.activeSlide === 1 && yDiff < 0) || (this.activeSlide === this.slidesAmount && yDiff > 0))){
+        e.stopPropagation()
+      }
+      
+      if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
+        if ( yDiff > 0 ) {
+          this.changeSlide('next')
+        } else {
+          this.changeSlide('prev')
+        }
+      }
+    },
+    updateProgress: function (slideNumber) {
+      let progressUnderline = document.querySelector('.w-progress__underline');
+      let progressNumber = document.querySelector('.w-progress__number');
+      let progressPercent = ((100 / this.slidesAmount) * slideNumber);
+
+      progressUnderline.style.height =`${progressPercent}%`;
+      progressNumber.style.top = `${progressPercent - 9}%`;
+      progressNumber.innerHTML = ('0' + slideNumber).slice(-2);
+    },
   },
   watch: {
     isActive: function(isActive) {
@@ -129,38 +197,6 @@ export default {
           this.delay = false;
         }, this.transitionDuration * 2)
       }
-    },
-  },
-  methods: {
-    onWheel: function (e) {
-      if(this.isActive){
-        // Stop v-slider wheel propagation
-        if(this.delay || !((this.activeSlide === 1 && e.deltaY < 0) || (this.activeSlide === this.slidesAmount && e.deltaY > 0))){
-          e.stopPropagation()
-        }
-        // Change slide with delay
-        if(!this.delay){
-          if(e.deltaY < 0){
-            if(this.activeSlide > 1){
-              this.activeSlide = this.activeSlide - 1;
-            }
-          } else {
-            if(this.activeSlide < this.slidesAmount){
-              this.activeSlide = this.activeSlide + 1;
-            }
-          }
-          this.delay = true;
-        }
-      }
-    },
-    updateProgress: function (slideNumber) {
-      let progressUnderline = document.querySelector('.w-progress__underline');
-      let progressNumber = document.querySelector('.w-progress__number');
-      let progressPercent = ((100 / this.slidesAmount) * slideNumber);
-
-      progressUnderline.style.height =`${progressPercent}%`;
-      progressNumber.style.top = `${progressPercent - 9}%`;
-      progressNumber.innerHTML = ('0' + slideNumber).slice(-2);
     },
   },
   computed: {
