@@ -18,6 +18,7 @@
       transition-delay: .6s;
       transform: translateY(-20px);
       opacity: 0;
+      z-index: 0 !important;
       & path {
         transition: fill $t-theme-duration;
       }
