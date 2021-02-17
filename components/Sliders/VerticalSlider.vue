@@ -121,12 +121,14 @@ export default {
 
       let xDiff = this.touchXDown - xUp;
       let yDiff = this.touchYDown - yUp;
+
+      console.log(yDiff);
       
       if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
-        if ( yDiff > 200 && this.swiper.realIndex !== (this.swiper.slides.length - 1)) {
+        if ( yDiff > 250 && this.swiper.realIndex !== (this.swiper.slides.length - 1)) {
           this.changeSlide('next', 500)
-        } else if(yDiff < -200 &&  this.swiper.realIndex !== 0) {
-          this.changeSlide('prev', 500)
+        } else if(yDiff < -250 &&  this.swiper.realIndex !== 0) {
+          this.changeSlide('prev', 200)
         }
       }
     }

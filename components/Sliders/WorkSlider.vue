@@ -165,9 +165,9 @@ export default {
       }
       
       if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
-        if ( yDiff > 100 ) {
+        if ( yDiff > 250 ) {
           this.changeSlide('next')
-        } else if(yDiff < -100) {
+        } else if(yDiff < -250) {
           this.changeSlide('prev')
         }
       }
