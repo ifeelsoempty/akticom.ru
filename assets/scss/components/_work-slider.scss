@@ -10,6 +10,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     z-index: 999;
   }
   &__line{
@@ -32,8 +33,9 @@
   &__rain{
     position: absolute;
     top: 5%;
-    left: -15%;
-    max-width: 200%;
+    max-width: 150%;
+    max-height: 100%;
+    z-index: 1;
     
     transform: translateY(-200vh);
     opacity: 0;
@@ -41,7 +43,6 @@
   }
   &__pic{
     position: absolute;
-    left: -25%;
     top: 35%;
     width: 600px;
     transition: opacity .25s, transform .25s;
@@ -84,32 +85,52 @@
     width: 100%;
     height: 100vh;
   }
-  &__info{
+  &-info{
     flex: 1;
-    padding: 0 200px 0 100px;
-    margin-top: 150px;
     transform: translate3d(100px,100px,0) skewY(-10deg);
     opacity: 0;
+    z-index: 1;
+    text-shadow: 2px 2px 2px $black;
     transition: .25s .25s;
-  }
-  &__link{
-    color: $white;
-    position: relative;
-    &::after{
-      content: "";
-      position: absolute;
-      right: -25px;
-      height: 100%;
-      width: 14px;
-      background: url('../images/link.png') no-repeat center;
+    &__title{
+      font-size: 80px;
+      font-weight: bold;
     }
-  }
-  &__title{
-    position: relative;
-    left: -142px;
-    margin-top: 50px;
-    font-size: 80px;
-    font-weight: bold;
+    &__link{
+      color: $white;
+      position: relative;
+      &::after{
+        content: "";
+        position: absolute;
+        right: -25px;
+        height: 100%;
+        width: 14px;
+        background: url('../images/link.png') no-repeat center;
+      }
+    }
+    &__desc{
+      margin-top: 50px;
+      font-size: 20px;
+      line-height: 30px;
+    }
+    
+    &_desk{
+      padding: 0 200px 0 100px;
+      margin-top: 150px;
+    }
+    &_desk &__title{
+      position: relative;
+      left: -142px;
+      margin-top: 50px;
+    }
+
+    &_mobile{
+      display: none !important;
+      width: 100vw;
+      position: absolute;
+      top: 30%;
+      text-align: center;
+    }
   }
   &__dark-title{
     position: absolute;
@@ -120,17 +141,12 @@
     font-size: 80px;
     font-weight: bold;
   }
-  &__desc{
-    margin-top: 50px;
-    font-size: 20px;
-    line-height: 30px;
-  }
   &.active {
     z-index: 999;
     & .w-slider__background {
       transition-delay: .5s;
     }
-    & .w-slide__info {
+    & .w-slide-info {
       display: block;
     }
     & .w-slider__line {
@@ -146,7 +162,7 @@
       opacity: 1;
       transition: opacity .5s .5s, transform 1s .5s;
     }
-    & .w-slide__info{
+    & .w-slide-info{
       transform: translate3d(0, 0, 0) skewY(0deg);
       opacity: 1;
     }
@@ -187,29 +203,82 @@
     &__inner{
       flex-direction: column;
     }
-    &__info{
+
+    &-info{
       padding: 0;
       margin: 0;
+      &__desc{
+        margin-bottom: 50px;
+        max-height: 250px;
+        overflow: hidden;
+        font-size: 16px;
+        line-height: 25px;
+      }
     }
-    &__title{
+
+    &-info_desk &-info__title{
       display: none;
     }
-    &__link{
+    &-info_desk &-info__link{
       display: none;
     }
-    &__desc{
-      margin-bottom: 50px 
+
+    &-info_mobile{
+      display: block !important;
+    }
+    &-info_mobile &-info__title{
+      font-size: 80px;
+      text-align: center;
+      word-spacing: 999999999999999999999px;
+    }
+
+    &__dark-title{
+      display: none;
     }
   }
   .w-slider{
     &__pic{
       width: 50vw;
       min-width: 285px;
+      top: auto;
+      bottom: 0;
+    }
+    &__static{
+      padding: 150px 0;
     }
     &__background{
-      width: 200px;
-      min-width: 200px;
-      margin-left: 100px;
+      min-width: 300px;
+      margin: 0 100px;
     }
+  }
+  .w-progress{
+    position: relative;
+    right: -25px;
+  }
+}
+
+@media screen and(max-width: 900px){
+  .w-slide{
+    &-info_mobile &-info__title{
+      font-size: 50px;
+    }
+  }
+}
+
+@media screen and(max-width: 600px){
+  .w-slider{
+    &__background{
+      min-width: 100px;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+  }
+  .w-slide{
+    &-info_mobile &-info__title{
+      font-size: 35px;
+    }
+  }
+  .w-progress{
+    right: -11px;
   }
 }
