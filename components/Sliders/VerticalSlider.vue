@@ -123,9 +123,9 @@ export default {
       let yDiff = this.touchYDown - yUp;
       
       if ( Math.abs( xDiff ) <= Math.abs( yDiff ) ) {
-        if ( yDiff > 100 && this.swiper.realIndex !== (this.swiper.slides.length - 1)) {
+        if ( yDiff > 200 && this.swiper.realIndex !== (this.swiper.slides.length - 1)) {
           this.changeSlide('next', 500)
-        } else if(yDiff < -100 &&  this.swiper.realIndex !== 0) {
+        } else if(yDiff < -200 &&  this.swiper.realIndex !== 0) {
           this.changeSlide('prev', 500)
         }
       }
