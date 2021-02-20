@@ -77,3 +77,11 @@
       }
     }
   }
+
+@media screen and(max-width: 600px){
+  .header {
+    &__logo svg{
+      width: 40px;
+    }
+  }
+}
