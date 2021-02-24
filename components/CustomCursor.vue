@@ -29,25 +29,6 @@ export default {
     }
   },
   methods: {
-    // animate({timing, draw, duration}) {
-    //   let start = performance.now();
-
-    //   requestAnimationFrame(function animate(time) {
-    //     // timeFraction изменяется от 0 до 1
-    //     let timeFraction = (time - start) / duration;
-    //     if (timeFraction > 1) timeFraction = 1;
-
-    //     // вычисление текущего состояния анимации
-    //     let progress = timing(timeFraction);
-
-    //     draw(progress); // отрисовать её
-
-    //     if (timeFraction < 1) {
-    //       requestAnimationFrame(animate);
-    //     }
-
-    //   });
-    // },
     moveCursor(e) {
       this.xChild = e.clientX
       this.yChild = e.clientY;
@@ -68,24 +49,7 @@ export default {
     magnetOut(e) {
       if(!e.relatedTarget.closest('.cursor-magnet') && e.target.closest('.cursor-magnet')){
         let realTarget = e.target.closest('.cursor-magnet');
-        
         realTarget.style.transform = 'translate(0, 0)';
-        // this.animate({
-        //   duration: 500,
-        //   timing(timeFraction) {
-        //     return timeFraction;
-        //   },
-        //   draw(progress) {
-        //     let translate = /translate\(\s*([^\s,)]+)[ ,]([^\s,)]+)/.exec(realTarget.style.transform);
-        //     console.log(translate);
-
-        //     let newTransformX = translate[1] - (progress * translate[1]);
-        //     let newTransformY = transform[2] - (progress * transform[2]);
-
-        //     realTarget.style.transform = `translateX(${newTransformX}) translateY(${newTransformY}px)`;
-        //     // console.log(`translateX(${newTransformX}px) translateY(${newTransformY}px)`);
-        //   }
-        // })
       }
     },
 
