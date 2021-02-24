@@ -29,7 +29,8 @@
     right: 0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: height 0s,z-index 0s;
   }
   &__content{
@@ -37,7 +38,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 120px 0;
-    height: 100%;
+    min-height: 100%;
   }
   &-nav{
     display: flex;
@@ -118,7 +119,7 @@
     transition: background-color $t-theme-duration;
   }
   &__background{
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: -1;
@@ -175,45 +176,67 @@
         flex-direction: column;
       }
       &-item{
+        flex-direction: column;
         margin-right: 0;
         &__title{
-          font-size: 30px;
-        }
-        &__divider{
-          display: none;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 700px) {
-    .menu{
-      &-item{
-        &__title{
-          font-size: 25px;
+          font-size: 45px;
+          width: 100%;
+          text-align: center;
         }
         &__link{
           font-size: 13px;
         }
         &__links-list{
-          margin-left: 30px;
+          margin-left: 0;
+          margin-top: 20px;
+          text-align: center;
+        }
+        &__divider{
+          height: 2px;
+          width: 100%;
+          margin-left: 0;
+          margin-top: 20px;
+        }
+        &__divider .menu-divider__line{
+          transform: skewX(0);
+          width: 100%;
         }
       }
       &-footer{
         flex-direction: column;
+        margin-top: 50px;
+        &__col{
+          margin-right: 0;
+          margin-top: 20px; 
+        }
+        &__row{
+          margin-top: 5px;
+        }
       }
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     .menu{
       &-item{
         &__title{
-          font-size: 5vw;
+          font-size: 30px;
         }
         &__link{
-          font-size: 2vw;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .menu{
+      &-item{
+        align-items: flex-start;
+        &__title{
+          text-align: left;
+          font-size: 25px;
         }
         &__links-list{
-          margin-left: 20px;
+          text-align: left;
         }
       }
     }
