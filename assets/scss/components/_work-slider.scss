@@ -1,7 +1,7 @@
 
 .w-slider{
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   &__background{
     display: flex;
@@ -202,6 +202,7 @@
   .w-slide{
     &__inner{
       flex-direction: column;
+      min-height: 950px;
     }
 
     &-info{
