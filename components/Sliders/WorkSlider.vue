@@ -66,7 +66,7 @@ export default {
         },
         {
           title: 'Сувенировед',
-          siteName: 'horiba.ru',
+          siteName: 'suveniroved.ru',
           siteLink: 'https://www.suveniroved.ru/',
           description: 'Решает любые комплексные задачи по дизайну на сувенирную продукцию – от простого макетирования до создания индивидуальных сложных проектов.',
           slideRain: require('@/assets/images/works/rains/slide-4.png'),
@@ -96,7 +96,7 @@ export default {
         },
         {
           title: 'Lass Print',
-          siteName: 'lass-print.akticom-test.ru',
+          siteName: 'lass-print.ru',
           siteLink: 'http://lass-print.akticom-test.ru/',
           description: 'Компания развивается на рынке с 2009 года. За этот срок из маленькой организации мы выросли в Гипермаркет расходных материалов с тысячами наименований продукции.',
           slideRain: require('@/assets/images/works/rains/slide-7.png'),
