@@ -39,15 +39,24 @@
     transform: translateY(-200vh);
     opacity: 0;
     transition: opacity .5s, transform 1s;
+
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
   }
   &__pic{
     position: absolute;
     bottom: 0;
     width: 800px;
     transition: opacity .25s, transform .25s;
-
     transform: translateY(-150px);
     opacity: 0;
+
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
   }
   &__static{
     height: 100%;
@@ -202,7 +211,6 @@
   .w-slide{
     &__inner{
       flex-direction: column;
-      min-height: 950px;
     }
 
     &-info{

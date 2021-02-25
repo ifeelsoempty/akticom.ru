@@ -50,8 +50,11 @@
       background: darken(#939786, 10%);
     }
   }
-  & .slider-mouse svg path{
+  & .slider-scroll__mouse path{
     stroke: #939786;
+  }
+  & .slider-scroll__finger path{
+    fill: #939786;
   }
 }
 
@@ -107,8 +110,11 @@
   & .slide__nav::before{
     background: $black;
   }
-  & .slider-mouse svg path{
+  & .slider-scroll__mouse path{
     stroke: $black;
+  }
+  & .slider-scroll__finger path{
+    fill: $black;
   }
 }
 
@@ -124,5 +130,8 @@
     &:hover .slider-btn-next__background{
       background: darken(#AE4C4C, 5%)
     }
+  }
+  & .slider-scroll__finger path{
+    fill: $white;
   }
 }

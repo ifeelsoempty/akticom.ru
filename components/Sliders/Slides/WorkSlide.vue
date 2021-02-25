@@ -14,8 +14,12 @@
             <a class="w-slide-info__link" :href="slideData.siteLink" target="_blank">{{ slideData.siteName }}</a>
             <div class="w-slide-info__title">{{ slideData.title }}</div>
           </div>
-          <img class="w-slider__rain" :src="slideData.slideRain" alt="">
-          <img class="w-slider__pic" :src="slideData.slidePicture" alt="">
+          <div class="w-slider__rain">
+            <img :src="slideData.slideRain" alt="">
+          </div>
+          <div class="w-slider__pic">
+            <img :src="slideData.slidePicture" alt="">
+          </div>
         </div>
         <div class="w-slide-info w-slide-info_desk">
           <a class="w-slide-info__link" :href="slideData.siteLink" target="_blank">{{ slideData.siteName }}</a>
