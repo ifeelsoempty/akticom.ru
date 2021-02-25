@@ -30,7 +30,13 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/robots',
   ],
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '/'
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
