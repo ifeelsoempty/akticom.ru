@@ -58,6 +58,26 @@
       height: auto;
     }
   }
+  &__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    animation: blink 3s infinite cubic-bezier(0.1, -0.6, 0.2, 0);;
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
   &__static{
     height: 100%;
     padding: 200px 0 100px 0;

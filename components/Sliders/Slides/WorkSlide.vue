@@ -19,6 +19,7 @@
           </div>
           <div class="w-slider__pic">
             <img :src="slideData.slidePicture" alt="">
+            <img class="w-slider__overlay" v-if="slideData.slideOverlay" :src="slideData.slideOverlay" alt="">
           </div>
         </div>
         <div class="w-slide-info w-slide-info_desk">
